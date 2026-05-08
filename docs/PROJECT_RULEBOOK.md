@@ -213,3 +213,42 @@ The immediate mandate is:
 > Build a private web-based MVP that proves natural-language updates can be converted into structured records and displayed through a useful dashboard.
 
 All work should support this mandate unless the owner changes direction.
+
+---
+
+## Article 13 — Manual Update Fallback Protocol
+
+If the assistant or any AI agent is unable to update the GitHub repository directly, the user must be asked to apply the update manually.
+
+In such cases, the assistant must provide:
+
+1. a ZIP file containing the changed files or full repo-ready patch structure;
+2. a PowerShell command/script that extracts the ZIP into the local repository;
+3. Git commands to stage, commit, and push the changes;
+4. a clear commit message suggestion;
+5. a summary of what files are being changed.
+
+The user's local repository path is:
+
+```text
+D:\Coding\Repos\Aegoryn
+```
+
+The user's default downloads folder should be assumed as the ZIP download location, usually:
+
+```text
+$env:USERPROFILE\Downloads
+```
+
+The fallback PowerShell workflow should normally:
+
+1. set the ZIP path from the Downloads folder;
+2. set the repository path to `D:\Coding\Repos\Aegoryn`;
+3. extract the ZIP to a temporary folder;
+4. copy the extracted files into the local repo;
+5. run `git status`;
+6. stage changed files;
+7. commit with the suggested message;
+8. push to the current branch.
+
+Sensitive values must still not be included in the ZIP.
