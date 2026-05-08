@@ -21,11 +21,13 @@ This project follows a human-readable changelog format inspired by Keep a Change
 - AI agent guidelines.
 - Project rulebook/bylaws.
 - Manual update fallback protocol for cases where direct repository updates fail.
+- Versioning and release policy for Git tags, release notes, and rollback checkpoints.
 
 ### Changed
 
 - Repository initialized as the central source of truth for the AegorynOS project.
 - Strengthened the project rulebook to state that documentation updates are mandatory and form part of the definition of done for every meaningful project change.
+- Clarified that Git tags and changelog entries, not a plain version file, are the authoritative rollback/versioning mechanism.
 
 ### Security
 
