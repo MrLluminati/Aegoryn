@@ -37,21 +37,23 @@ Status legend:
 
 ## 2. Versioning
 
-- [ ] Create baseline Git tag: `v0.0.1-planning`.
+- [x] Create baseline Git tag: `v0.0.1-planning`.
 - [ ] Create release notes for `v0.0.1-planning`.
-- [ ] Push baseline tag to GitHub.
+- [x] Push baseline tag to GitHub.
 
 ---
 
 ## 3. Project Scaffold
 
-- [ ] Create Next.js app.
-- [ ] Add TypeScript.
-- [ ] Add Tailwind CSS.
-- [ ] Add base layout.
-- [ ] Add app shell.
-- [ ] Add route structure.
-- [ ] Add reusable UI components.
+- [x] Create Next.js app scaffold files.
+- [x] Add TypeScript configuration.
+- [x] Add Tailwind CSS configuration.
+- [x] Add base layout.
+- [x] Add initial landing page shell.
+- [x] Add initial dashboard route shell.
+- [x] Add initial chat route shell.
+- [~] Add reusable UI components.
+- [~] Verify local install/build after pulling latest changes.
 
 ---
 
@@ -78,13 +80,14 @@ Status legend:
 
 ## 6. Dashboard
 
-- [ ] Create dashboard shell.
-- [ ] Add account balance cards.
-- [ ] Add pocket money summary.
+- [x] Create dashboard shell.
+- [x] Add static account balance cards.
+- [x] Add static pocket money summary.
 - [ ] Add recent transactions.
-- [ ] Add active tasks.
+- [x] Add active tasks placeholder.
 - [ ] Add active projects.
 - [ ] Add AI usage card.
+- [ ] Connect dashboard to database.
 
 ---
 
@@ -113,10 +116,11 @@ Status legend:
 
 ## 9. Chat Assistant MVP
 
-- [ ] Create chat UI.
+- [x] Create static chat UI shell.
 - [ ] Create backend chat endpoint.
 - [ ] Create AI parser schema.
 - [ ] Add classification logic.
+- [x] Add clarification-message example.
 - [ ] Add clarification handling.
 - [ ] Add action validation.
 - [ ] Save AI messages.
