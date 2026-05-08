@@ -40,7 +40,7 @@ Status legend:
 - [x] Create baseline Git tag: `v0.0.1-planning`.
 - [ ] Create release notes for `v0.0.1-planning`.
 - [x] Push baseline tag to GitHub.
-- [ ] Create app-scaffold Git tag: `v0.1.0-mvp-start`.
+- [x] Create app-scaffold Git tag: `v0.1.0-mvp-start`.
 
 ---
 
@@ -56,7 +56,7 @@ Status legend:
 - [~] Add reusable UI components.
 - [x] Verify local install and dev server after dependency fixes.
 - [x] Verify production build with `npm run build`.
-- [ ] Commit generated `package-lock.json` for reproducible installs.
+- [x] Commit generated `package-lock.json` for reproducible installs.
 
 ---
 
