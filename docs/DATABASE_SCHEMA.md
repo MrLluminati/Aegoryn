@@ -1,119 +1,266 @@
-# AegorynOS Database Schema Draft
+# AegorynOS Database Schema
 
-## users_profile
+This document tracks the current planned Supabase/PostgreSQL schema for the AegorynOS MVP.
 
-```sql
-create table users_profile (
-  id uuid primary key default gen_random_uuid(),
-  user_id uuid not null,
-  full_name text,
-  currency text default 'INR',
-  timezone text default 'Asia/Kolkata',
-  created_at timestamptz default now()
-);
+Authoritative migration files are stored in:
+
+```text
+supabase/migrations/
 ```
 
-## accounts
+Current schema checkpoint:
 
-```sql
-create table accounts (
-  id uuid primary key default gen_random_uuid(),
-  user_id uuid not null,
-  account_name text not null,
-  account_type text default 'bank',
-  current_balance numeric(12,2) not null default 0,
-  is_primary boolean default false,
-  created_at timestamptz default now()
-);
+```text
+v0.1.1-supabase-schema
 ```
 
-## money_buckets
+---
 
-```sql
-create table money_buckets (
-  id uuid primary key default gen_random_uuid(),
-  user_id uuid not null,
-  bucket_name text not null,
-  month text,
-  starting_amount numeric(12,2) default 0,
-  current_balance numeric(12,2) default 0,
-  linked_account_id uuid references accounts(id),
-  created_at timestamptz default now()
-);
+## 1. Migration Files
+
+| File | Purpose |
+|---|---|
+| `supabase/migrations/0001_initial_schema.sql` | Creates core MVP tables and indexes. |
+| `supabase/migrations/0002_rls_policies.sql` | Enables Row Level Security and user-owned row policies. |
+
+---
+
+## 2. Tables
+
+### 2.1 users_profile
+
+Stores app-level user profile and preferences.
+
+Key fields:
+
+- `id`
+- `user_id`
+- `full_name`
+- `currency`
+- `timezone`
+- `created_at`
+- `updated_at`
+
+Purpose:
+
+- links Supabase Auth user to app profile settings;
+- stores default currency and timezone.
+
+---
+
+### 2.2 accounts
+
+Stores bank accounts, wallets, or other money accounts.
+
+Key fields:
+
+- `id`
+- `user_id`
+- `account_name`
+- `account_type`
+- `current_balance`
+- `is_primary`
+- `notes`
+- `created_at`
+- `updated_at`
+
+Initial expected account examples:
+
+- Kotak Mahindra Bank;
+- Axis Bank;
+- SBI.
+
+---
+
+### 2.3 money_buckets
+
+Stores earmarked money sources such as pocket money, savings, or monthly budgets.
+
+Key fields:
+
+- `id`
+- `user_id`
+- `bucket_name`
+- `bucket_month`
+- `starting_amount`
+- `current_balance`
+- `linked_account_id`
+- `notes`
+- `created_at`
+- `updated_at`
+
+Example bucket:
+
+- Pocket Money for May 2026.
+
+---
+
+### 2.4 transactions
+
+Stores income, expense, and transfer records.
+
+Key fields:
+
+- `id`
+- `user_id`
+- `transaction_date`
+- `transaction_type`
+- `amount`
+- `category`
+- `account_id`
+- `money_bucket_id`
+- `description`
+- `source_text`
+- `created_at`
+- `updated_at`
+
+Rules:
+
+- `transaction_type` must be one of `income`, `expense`, or `transfer`.
+- `amount` must not be negative.
+- `source_text` should preserve the original user message wherever possible.
+
+---
+
+### 2.5 projects
+
+Stores user projects.
+
+Key fields:
+
+- `id`
+- `user_id`
+- `project_name`
+- `status`
+- `next_action`
+- `notes`
+- `created_at`
+- `updated_at`
+
+Initial project examples:
+
+- AegorynOS;
+- Chambers of AK website;
+- account management;
+- coding learning.
+
+---
+
+### 2.6 tasks
+
+Stores tasks and reminders.
+
+Key fields:
+
+- `id`
+- `user_id`
+- `title`
+- `project_id`
+- `priority`
+- `status`
+- `due_date`
+- `source_text`
+- `created_at`
+- `updated_at`
+
+---
+
+### 2.7 ai_messages
+
+Stores user messages and AI interpretation logs.
+
+Key fields:
+
+- `id`
+- `user_id`
+- `user_message`
+- `ai_response`
+- `classification`
+- `status`
+- `created_at`
+
+Rules:
+
+- store parsed AI output as JSON where applicable;
+- do not log secrets or credentials;
+- use status values such as processed, clarification_required, or failed.
+
+---
+
+### 2.8 ai_usage
+
+Stores monthly AI credit usage.
+
+Key fields:
+
+- `id`
+- `user_id`
+- `usage_month`
+- `credits_used`
+- `credits_limit`
+- `plan_name`
+- `created_at`
+- `updated_at`
+
+Rules:
+
+- one row per user per month;
+- backend must check usage before AI calls;
+- backend must deduct credits after successful AI processing.
+
+---
+
+## 3. Row Level Security
+
+Row Level Security must be enabled before real data is stored.
+
+Current policy file:
+
+```text
+supabase/migrations/0002_rls_policies.sql
 ```
 
-## transactions
+Core rule:
 
-```sql
-create table transactions (
-  id uuid primary key default gen_random_uuid(),
-  user_id uuid not null,
-  transaction_date date not null,
-  transaction_type text not null check (transaction_type in ('income', 'expense', 'transfer')),
-  amount numeric(12,2) not null,
-  category text,
-  account_id uuid references accounts(id),
-  money_bucket_id uuid references money_buckets(id),
-  description text,
-  source_text text,
-  created_at timestamptz default now()
-);
+> A user may only access rows where `auth.uid()` equals the row's `user_id`.
+
+Tables covered:
+
+- users_profile;
+- accounts;
+- money_buckets;
+- transactions;
+- projects;
+- tasks;
+- ai_messages;
+- ai_usage.
+
+---
+
+## 4. Seed Data
+
+Seed templates are stored in:
+
+```text
+supabase/seed/
 ```
 
-## projects
+Files:
 
-```sql
-create table projects (
-  id uuid primary key default gen_random_uuid(),
-  user_id uuid not null,
-  project_name text not null,
-  status text default 'active',
-  next_action text,
-  notes text,
-  created_at timestamptz default now()
-);
-```
+| File | Purpose |
+|---|---|
+| `README.md` | Explains seed-data workflow and initial account-management data. |
+| `seed_template.sql` | Generic local placeholder seed template. |
 
-## tasks
+Do not commit private production data or credentials.
 
-```sql
-create table tasks (
-  id uuid primary key default gen_random_uuid(),
-  user_id uuid not null,
-  title text not null,
-  project_id uuid references projects(id),
-  priority text default 'medium',
-  status text default 'pending',
-  due_date timestamptz,
-  source_text text,
-  created_at timestamptz default now()
-);
-```
+---
 
-## ai_messages
+## 5. Next Database Tasks
 
-```sql
-create table ai_messages (
-  id uuid primary key default gen_random_uuid(),
-  user_id uuid not null,
-  user_message text not null,
-  ai_response jsonb,
-  classification text,
-  status text default 'processed',
-  created_at timestamptz default now()
-);
-```
-
-## ai_usage
-
-```sql
-create table ai_usage (
-  id uuid primary key default gen_random_uuid(),
-  user_id uuid not null,
-  month text not null,
-  credits_used integer default 0,
-  credits_limit integer default 100,
-  plan_name text default 'free',
-  created_at timestamptz default now()
-);
-```
+- Create Supabase project.
+- Run migrations.
+- Create local authenticated user.
+- Replace seed placeholders locally.
+- Test RLS policies.
+- Connect dashboard to database.
