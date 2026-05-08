@@ -24,6 +24,7 @@ This project follows a human-readable changelog format inspired by Keep a Change
 ### Changed
 
 - Repository initialized as the central source of truth for the AegorynOS project.
+- Strengthened the project rulebook to state that documentation updates are mandatory and form part of the definition of done for every meaningful project change.
 
 ### Security
 
