@@ -27,6 +27,11 @@ This project follows a human-readable changelog format inspired by Keep a Change
 - Setup guide for local development, Supabase preparation, AI provider flow, manual fallback, and version tags.
 - Security policy covering secret handling, Supabase requirements, AI validation, frontend restrictions, and private-alpha checklist.
 - MVP backlog with actionable checklists for repository foundation, app scaffold, Supabase, authentication, dashboard, account management, chat assistant, and usage credits.
+- Next.js app scaffold with package manifest, app router layout, global styles, Tailwind config, PostCSS config, and TypeScript config.
+- Initial landing page shell for AegorynOS.
+- Initial static dashboard shell with account cards, pocket money summary, and task placeholders.
+- Initial static chat assistant shell with clarification-message example.
+- Supabase browser client helper.
 
 ### Changed
 
@@ -34,6 +39,7 @@ This project follows a human-readable changelog format inspired by Keep a Change
 - Strengthened the project rulebook to state that documentation updates are mandatory and form part of the definition of done for every meaningful project change.
 - Clarified that Git tags and changelog entries, not a plain version file, are the authoritative rollback/versioning mechanism.
 - Updated README to list repository foundation files, security note, and complete documentation index.
+- Updated MVP backlog to reflect app scaffold progress.
 
 ### Security
 
