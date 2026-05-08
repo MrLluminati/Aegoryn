@@ -20,6 +20,7 @@ This project follows a human-readable changelog format inspired by Keep a Change
 - Contributor guidelines.
 - AI agent guidelines.
 - Project rulebook/bylaws.
+- Manual update fallback protocol for cases where direct repository updates fail.
 
 ### Changed
 
