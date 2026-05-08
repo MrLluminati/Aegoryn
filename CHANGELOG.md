@@ -32,6 +32,7 @@ This project follows a human-readable changelog format inspired by Keep a Change
 - Initial static dashboard shell with account cards, pocket money summary, and task placeholders.
 - Initial static chat assistant shell with clarification-message example.
 - Supabase browser client helper.
+- `v0.1.0-mvp-start` Git tag for the working app scaffold baseline.
 
 ### Changed
 
@@ -44,6 +45,7 @@ This project follows a human-readable changelog format inspired by Keep a Change
 - Temporarily removed ESLint dependencies and lint script from the MVP scaffold to avoid local npm dependency-resolution blocking during the first run.
 - Recorded successful local scaffold run for landing page, dashboard, and chat shell.
 - Recorded successful production build for the initial Next.js scaffold.
+- Marked the app-scaffold rollback checkpoint as complete.
 
 ### Security
 
