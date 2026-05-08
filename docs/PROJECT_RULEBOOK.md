@@ -92,12 +92,15 @@ Forbidden repository content:
 
 ## Article 6 — Documentation Duties
 
-1. Documentation must stay current with project changes.
-2. Any new feature must be reflected in the PRD or roadmap.
-3. Any architecture change must be reflected in the architecture document.
-4. Any database change must be reflected in the database schema document.
-5. Any contact/domain/service account change must be reflected in the project registry and contacts/domains document.
-6. Any notable change must be recorded in the changelog.
+1. Documentation must stay current with project changes at all times.
+2. Documentation updates are not optional; they are part of the definition of done for every meaningful change.
+3. No feature, architecture change, database change, service integration, account/domain update, brand decision, security decision, or operational rule change should be considered complete until the relevant documentation is updated.
+4. Any new feature must be reflected in the PRD or roadmap.
+5. Any architecture change must be reflected in the architecture document.
+6. Any database change must be reflected in the database schema document.
+7. Any contact/domain/service account change must be reflected in the project registry and contacts/domains document.
+8. Any notable change must be recorded in the changelog.
+9. If a future developer or AI agent is unsure whether documentation needs updating, they must update it or explicitly record why no update was required.
 
 ---
 
@@ -180,6 +183,8 @@ Every substantial change should answer:
 4. Does documentation need updating?
 5. Does the changelog need updating?
 6. Does this affect privacy, security, cost, or user data?
+
+A change is incomplete if the answer to documentation or changelog updates is ignored.
 
 ---
 
