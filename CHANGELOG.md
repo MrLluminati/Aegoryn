@@ -40,6 +40,7 @@ This project follows a human-readable changelog format inspired by Keep a Change
 - Clarified that Git tags and changelog entries, not a plain version file, are the authoritative rollback/versioning mechanism.
 - Updated README to list repository foundation files, security note, and complete documentation index.
 - Updated MVP backlog to reflect app scaffold progress.
+- Pinned Tailwind CSS to v3.4.x so the current PostCSS configuration and `@tailwind base/components/utilities` stylesheet work without requiring the Tailwind v4 PostCSS plugin package.
 
 ### Security
 
