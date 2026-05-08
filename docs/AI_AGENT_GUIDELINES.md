@@ -1,0 +1,198 @@
+# AI Agent Guidelines for AegorynOS
+
+This document gives instructions to AI agents working on this repository.
+
+AegorynOS may be worked on by different AI assistants or human developers in the future. Any AI agent accessing this repository must follow these rules before making changes.
+
+---
+
+## 1. Read These Files First
+
+Before editing code or documentation, read:
+
+1. `README.md`
+2. `docs/PRD.md`
+3. `docs/ARCHITECTURE.md`
+4. `docs/DATABASE_SCHEMA.md`
+5. `docs/ROADMAP.md`
+6. `docs/PROJECT_REGISTRY.md`
+7. `docs/CONTACTS_AND_DOMAINS.md`
+8. `docs/PROJECT_RULEBOOK.md`
+9. `CONTRIBUTING.md`
+10. `CHANGELOG.md`
+
+Do not make assumptions that contradict these files.
+
+---
+
+## 2. Product Identity
+
+Current identity:
+
+- Product: Aegoryn
+- App/System: AegorynOS
+- Assistant: Aego
+- Tagline: Guard your records. Command your life.
+
+Do not change these without explicit user instruction.
+
+---
+
+## 3. Mission
+
+AegorynOS is not just a chatbot. It is a structured personal assistant system.
+
+The core mission is:
+
+> Convert natural-language life updates into structured, searchable, auditable records.
+
+The AI should help organize:
+
+- accounts;
+- transactions;
+- money buckets;
+- tasks;
+- projects;
+- reminders;
+- notes;
+- personal records;
+- future monetisation usage credits.
+
+---
+
+## 4. Critical Restrictions
+
+AI agents must not:
+
+- commit secrets or credentials;
+- place API keys in source code;
+- expose backend secrets to frontend code;
+- remove security warnings;
+- rename the product casually;
+- delete project registry documents;
+- ignore changelog updates;
+- add payment logic without documenting it;
+- add third-party services without recording them in the registry;
+- create legal claims that trademark clearance is final unless formal clearance has been completed.
+
+---
+
+## 5. Credential Handling
+
+If a feature requires credentials, create or update `.env.example` with safe placeholder variable names only.
+
+Example:
+
+```env
+OPENAI_API_KEY=your_openai_api_key_here
+NEXT_PUBLIC_SUPABASE_URL=your_supabase_project_url_here
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key_here
+SUPABASE_SERVICE_ROLE_KEY=your_supabase_service_role_key_here
+```
+
+Never commit actual values.
+
+---
+
+## 6. Documentation Update Rule
+
+Every meaningful change must update documentation.
+
+Examples:
+
+- Add new screen → update `docs/PRD.md` and `docs/ROADMAP.md`.
+- Add new table → update `docs/DATABASE_SCHEMA.md`.
+- Add new service → update `docs/PROJECT_REGISTRY.md` and `docs/CONTACTS_AND_DOMAINS.md`.
+- Change architecture → update `docs/ARCHITECTURE.md`.
+- Any notable change → update `CHANGELOG.md`.
+
+---
+
+## 7. Finance-Tracking Behaviour
+
+For account-management features, the system must ask clarifying questions if spending details are incomplete.
+
+If a user says they paid/spent money but does not mention the bank account or whether it came from savings/pocket money, the assistant must ask:
+
+> Which bank account was used, and was this from savings or pocket money?
+
+Do not guess missing financial source details.
+
+---
+
+## 8. AI Parser Behaviour
+
+The AI parser must produce structured outputs.
+
+It should classify messages into:
+
+- account_management;
+- task_management;
+- project_update;
+- reminder;
+- note;
+- question;
+- unknown.
+
+If required fields are missing, set `requires_clarification` to true and do not write incomplete actions to the database.
+
+---
+
+## 9. Architecture Rule
+
+All AI and database-writing logic must be backend-controlled.
+
+Frontend may send user messages to backend endpoints, but must not directly call:
+
+- OpenAI API;
+- Supabase service-role operations;
+- payment secret APIs.
+
+---
+
+## 10. User Safety and Privacy
+
+AegorynOS is expected to handle sensitive personal records. Treat all user data as private.
+
+Minimum requirements:
+
+- user-specific data isolation;
+- Row Level Security for Supabase;
+- server-side validation;
+- safe environment-variable handling;
+- no secrets in logs;
+- no unnecessary third-party sharing.
+
+---
+
+## 11. Changelog Rule
+
+Every meaningful AI or human contribution must add an entry under `[Unreleased]` in `CHANGELOG.md`.
+
+Use sections:
+
+- Added;
+- Changed;
+- Fixed;
+- Removed;
+- Security.
+
+---
+
+## 12. MVP Discipline
+
+Do not expand scope unnecessarily.
+
+Version 0.1 is focused on:
+
+- login;
+- chat input;
+- AI parser;
+- accounts;
+- transactions;
+- tasks;
+- projects;
+- dashboard;
+- usage credits.
+
+Avoid adding advanced features before the MVP works.
