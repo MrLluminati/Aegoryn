@@ -64,39 +64,39 @@ The AI should help organize:
 
 AI agents must not:
 
-- commit secrets or credentials;
-- place API keys in source code;
-- expose backend secrets to frontend code;
+- commit secrets or private credentials;
+- place secret values in source code;
+- expose backend-only credentials to frontend code;
 - remove security warnings;
 - rename the product casually;
 - delete project registry documents;
 - ignore changelog updates;
 - add payment logic without documenting it;
 - add third-party services without recording them in the registry;
-- create legal claims that trademark clearance is final unless formal clearance has been completed.
+- claim trademark clearance is final unless formal clearance has been completed.
 
 ---
 
 ## 5. Credential Handling
 
-If a feature requires credentials, create or update `.env.example` with safe placeholder variable names only.
+If a feature requires credentials or service configuration, create or update `.env.example` with safe placeholder names only.
 
-Example:
+Never commit real credential values.
 
-```env
-OPENAI_API_KEY=your_openai_api_key_here
-NEXT_PUBLIC_SUPABASE_URL=your_supabase_project_url_here
-NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key_here
-SUPABASE_SERVICE_ROLE_KEY=your_supabase_service_role_key_here
-```
+Real credential values must be stored only in:
 
-Never commit actual values.
+- local environment files excluded from Git;
+- deployment environment variables;
+- the relevant service dashboard;
+- a secure password manager.
 
 ---
 
-## 6. Documentation Update Rule
+## 6. Mandatory Documentation Update Rule
 
-Every meaningful change must update documentation.
+Every meaningful change must update documentation. This is mandatory, not optional.
+
+A change is not complete until all affected documentation is updated.
 
 Examples:
 
@@ -104,7 +104,10 @@ Examples:
 - Add new table → update `docs/DATABASE_SCHEMA.md`.
 - Add new service → update `docs/PROJECT_REGISTRY.md` and `docs/CONTACTS_AND_DOMAINS.md`.
 - Change architecture → update `docs/ARCHITECTURE.md`.
+- Change project rule → update `docs/PROJECT_RULEBOOK.md`.
 - Any notable change → update `CHANGELOG.md`.
+
+If unsure whether documentation needs updating, update it or clearly document why no update was required.
 
 ---
 
@@ -144,8 +147,8 @@ All AI and database-writing logic must be backend-controlled.
 
 Frontend may send user messages to backend endpoints, but must not directly call:
 
-- OpenAI API;
-- Supabase service-role operations;
+- AI provider APIs;
+- privileged database operations;
 - payment secret APIs.
 
 ---
