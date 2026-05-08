@@ -32,6 +32,21 @@ Version 0.1 proves the core workflow:
 - OpenAI API
 - Vercel deployment
 
+## Repository Foundation
+
+This repository includes the project foundation documents and safety rules required before app code begins:
+
+- `.gitignore`
+- `.env.example`
+- `CHANGELOG.md`
+- `CONTRIBUTING.md`
+- `docs/SETUP.md`
+- `docs/SECURITY.md`
+- `docs/MVP_BACKLOG.md`
+- `docs/VERSIONING_AND_RELEASES.md`
+- `docs/PROJECT_RULEBOOK.md`
+- `docs/AI_AGENT_GUIDELINES.md`
+
 ## Documentation
 
 See the `docs/` folder:
@@ -40,7 +55,19 @@ See the `docs/` folder:
 - `ARCHITECTURE.md`
 - `DATABASE_SCHEMA.md`
 - `ROADMAP.md`
+- `PROJECT_REGISTRY.md`
+- `CONTACTS_AND_DOMAINS.md`
+- `SETUP.md`
+- `SECURITY.md`
+- `MVP_BACKLOG.md`
+- `VERSIONING_AND_RELEASES.md`
+- `PROJECT_RULEBOOK.md`
+- `AI_AGENT_GUIDELINES.md`
+
+## Security Note
+
+Do not commit real credentials, API keys, tokens, OTPs, recovery codes, or private financial information. Use `.env.local` for local development and deployment environment variables for production.
 
 ## Current Status
 
-Planning and documentation stage.
+Repository foundation and documentation baseline are in progress. Actual app code has not started yet.
