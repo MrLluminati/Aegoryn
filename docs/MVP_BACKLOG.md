@@ -55,7 +55,7 @@ Status legend:
 - [x] Add initial chat route shell.
 - [~] Add reusable UI components.
 - [x] Verify local install and dev server after dependency fixes.
-- [ ] Verify production build with `npm run build`.
+- [x] Verify production build with `npm run build`.
 - [ ] Commit generated `package-lock.json` for reproducible installs.
 
 ---
