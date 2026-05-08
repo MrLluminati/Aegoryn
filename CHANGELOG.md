@@ -33,6 +33,10 @@ This project follows a human-readable changelog format inspired by Keep a Change
 - Initial static chat assistant shell with clarification-message example.
 - Supabase browser client helper.
 - `v0.1.0-mvp-start` Git tag for the working app scaffold baseline.
+- Supabase initial schema migration for core MVP tables and indexes.
+- Supabase Row Level Security policy migration for user-owned records.
+- Supabase seed-data folder with safe README and generic placeholder seed template.
+- Supabase setup guide for migrations, RLS checks, and environment handling.
 
 ### Changed
 
@@ -46,10 +50,12 @@ This project follows a human-readable changelog format inspired by Keep a Change
 - Recorded successful local scaffold run for landing page, dashboard, and chat shell.
 - Recorded successful production build for the initial Next.js scaffold.
 - Marked the app-scaffold rollback checkpoint as complete.
+- Updated database schema documentation to reference Supabase migration files, RLS policies, and seed templates.
 
 ### Security
 
 - Added rule that secrets, API keys, tokens, passwords, OTPs, recovery codes, and private credentials must never be committed to the repository.
+- Added Row Level Security policy migration for all MVP user-data tables.
 
 ---
 
