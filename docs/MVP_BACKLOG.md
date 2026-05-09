@@ -42,6 +42,7 @@ Status legend:
 - [x] Push baseline tag to GitHub.
 - [x] Create app-scaffold Git tag: `v0.1.0-mvp-start`.
 - [x] Create Supabase schema Git tag: `v0.1.1-supabase-schema`.
+- [ ] Create Supabase connection Git tag: `v0.1.2-supabase-connect`.
 
 ---
 
@@ -69,6 +70,11 @@ Status legend:
 - [x] Add Row Level Security policy migration.
 - [x] Add generic seed-data template.
 - [x] Add Supabase setup guide.
+- [x] Add Supabase environment helper.
+- [x] Add Supabase browser client helper.
+- [x] Add initial Supabase row types.
+- [x] Add account/bucket/transaction fetch helpers.
+- [x] Add local Supabase connection status page.
 - [ ] Run migrations in Supabase.
 - [ ] Enable Row Level Security in deployed database.
 - [ ] Test user-specific access policies.
