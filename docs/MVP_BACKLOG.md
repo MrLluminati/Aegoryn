@@ -80,6 +80,7 @@ Status legend:
 - [x] Run migrations in Supabase.
 - [x] Enable Row Level Security in deployed database.
 - [x] Verify Supabase MVP tables exist in Table Editor.
+- [x] Create test Auth user.
 - [ ] Test user-specific access policies.
 - [ ] Add local seed script for initial personal data.
 
