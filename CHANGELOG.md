@@ -60,6 +60,8 @@ This project follows a human-readable changelog format inspired by Keep a Change
 - Updated Supabase setup documentation for local connection testing and helper files.
 - Updated MVP backlog to reflect Supabase connection helper progress.
 - Recorded successful local verification that `/setup/supabase` renders without Supabase environment values and shows the expected not-configured state.
+- Recorded Visual Studio Code on Windows with PowerShell as the active development environment.
+- Updated setup documentation to prioritize VS Code workflow and current local routes.
 
 ### Security
 
