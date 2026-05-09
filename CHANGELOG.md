@@ -38,6 +38,10 @@ This project follows a human-readable changelog format inspired by Keep a Change
 - Supabase seed-data folder with safe README and generic placeholder seed template.
 - Supabase setup guide for migrations, RLS checks, and environment handling.
 - `v0.1.1-supabase-schema` Git tag for the Supabase schema and RLS baseline.
+- Supabase environment helper for safe public configuration checks.
+- Supabase setup status page at `/setup/supabase`.
+- Initial TypeScript row types for accounts, money buckets, and transactions.
+- Account, money bucket, and recent transaction fetch helpers.
 
 ### Changed
 
@@ -53,6 +57,8 @@ This project follows a human-readable changelog format inspired by Keep a Change
 - Marked the app-scaffold rollback checkpoint as complete.
 - Updated database schema documentation to reference Supabase migration files, RLS policies, and seed templates.
 - Marked the Supabase schema rollback checkpoint as complete.
+- Updated Supabase setup documentation for local connection testing and helper files.
+- Updated MVP backlog to reflect Supabase connection helper progress.
 
 ### Security
 
