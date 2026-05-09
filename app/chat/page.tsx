@@ -1,7 +1,8 @@
 "use client";
 
 import { FormEvent, useState } from "react";
-import { AppShell, NavPill, Panel, primaryButtonClassName } from "../../components/brand/AppShell";
+import { AppShell, Panel, primaryButtonClassName } from "../../components/brand/AppShell";
+import { ProtectedRoute } from "../../components/auth/ProtectedRoute";
 import type { AegoParserResult } from "../../lib/aego/parser";
 
 type ChatMessage = {
@@ -76,57 +77,53 @@ export default function ChatPage() {
       title="Chat Assistant"
       subtitle="First working parser phase. Aego now classifies natural-language updates and detects missing details before any database write is attempted."
       maxWidthClassName="max-w-4xl"
-      actions={
-        <>
-          <NavPill href="/dashboard">Dashboard</NavPill>
-          <NavPill href="/accounts">Accounts</NavPill>
-        </>
-      }
     >
-      <Panel className="flex min-h-[60vh] flex-col p-0">
-        <section className="flex-1 space-y-4 p-6">
-          {messages.map((message, index) => (
-            <div
-              key={`${message.role}-${index}`}
-              className={
-                message.role === "user"
-                  ? "ml-auto max-w-xl rounded-3xl bg-aegoryn-gold p-4 text-black"
-                  : "mr-auto max-w-2xl rounded-3xl border border-white/10 bg-black/35 p-4 text-white/75"
-              }
-            >
-              <p className="text-xs uppercase tracking-[0.2em] opacity-60">{message.role}</p>
-              <p className="mt-2 text-sm leading-6">{message.text}</p>
+      <ProtectedRoute>
+        <Panel className="flex min-h-[60vh] flex-col p-0">
+          <section className="flex-1 space-y-4 p-6">
+            {messages.map((message, index) => (
+              <div
+                key={`${message.role}-${index}`}
+                className={
+                  message.role === "user"
+                    ? "ml-auto max-w-xl rounded-3xl bg-aegoryn-gold p-4 text-black"
+                    : "mr-auto max-w-2xl rounded-3xl border border-white/10 bg-black/35 p-4 text-white/75"
+                }
+              >
+                <p className="text-xs uppercase tracking-[0.2em] opacity-60">{message.role}</p>
+                <p className="mt-2 text-sm leading-6">{message.text}</p>
 
-              {message.result ? (
-                <div className="mt-4 rounded-2xl border border-white/10 bg-black/30 p-4 text-xs leading-5 text-white/60">
-                  <p><span className="text-aegoryn-gold">Classification:</span> {message.result.classification}</p>
-                  <p><span className="text-aegoryn-gold">Intent:</span> {message.result.intent}</p>
-                  <p><span className="text-aegoryn-gold">Needs clarification:</span> {message.result.requiresClarification ? "Yes" : "No"}</p>
-                  {message.result.actions[0]?.transaction ? (
-                    <pre className="mt-3 overflow-auto rounded-xl bg-black/40 p-3 text-[11px] text-white/55">
-                      {JSON.stringify(message.result.actions[0].transaction, null, 2)}
-                    </pre>
-                  ) : null}
-                </div>
-              ) : null}
-            </div>
-          ))}
-        </section>
+                {message.result ? (
+                  <div className="mt-4 rounded-2xl border border-white/10 bg-black/30 p-4 text-xs leading-5 text-white/60">
+                    <p><span className="text-aegoryn-gold">Classification:</span> {message.result.classification}</p>
+                    <p><span className="text-aegoryn-gold">Intent:</span> {message.result.intent}</p>
+                    <p><span className="text-aegoryn-gold">Needs clarification:</span> {message.result.requiresClarification ? "Yes" : "No"}</p>
+                    {message.result.actions[0]?.transaction ? (
+                      <pre className="mt-3 overflow-auto rounded-xl bg-black/40 p-3 text-[11px] text-white/55">
+                        {JSON.stringify(message.result.actions[0].transaction, null, 2)}
+                      </pre>
+                    ) : null}
+                  </div>
+                ) : null}
+              </div>
+            ))}
+          </section>
 
-        <footer className="border-t border-white/10 p-4">
-          <form className="flex gap-3 rounded-full border border-white/10 bg-black/35 p-2" onSubmit={handleSubmit}>
-            <input
-              className="flex-1 bg-transparent px-4 text-sm outline-none placeholder:text-white/35"
-              placeholder="Dump an update for Aego to classify..."
-              value={input}
-              onChange={(event) => setInput(event.target.value)}
-            />
-            <button className={`${primaryButtonClassName} px-5 py-2`} type="submit" disabled={isLoading || !input.trim()}>
-              {isLoading ? "Parsing..." : "Send"}
-            </button>
-          </form>
-        </footer>
-      </Panel>
+          <footer className="border-t border-white/10 p-4">
+            <form className="flex gap-3 rounded-full border border-white/10 bg-black/35 p-2" onSubmit={handleSubmit}>
+              <input
+                className="flex-1 bg-transparent px-4 text-sm outline-none placeholder:text-white/35"
+                placeholder="Dump an update for Aego to classify..."
+                value={input}
+                onChange={(event) => setInput(event.target.value)}
+              />
+              <button className={`${primaryButtonClassName} px-5 py-2`} type="submit" disabled={isLoading || !input.trim()}>
+                {isLoading ? "Parsing..." : "Send"}
+              </button>
+            </form>
+          </footer>
+        </Panel>
+      </ProtectedRoute>
     </AppShell>
   );
 }
