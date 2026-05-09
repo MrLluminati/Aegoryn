@@ -46,6 +46,7 @@ Status legend:
 - [x] Create Supabase connection Git tag: `v0.1.2-supabase-connect`.
 - [x] Create account-ledger Git tag: `v0.1.3-account-ledger`.
 - [x] Create brand-foundation Git tag: `v0.1.3-brand-foundation`.
+- [ ] Create auth-nav-shell Git tag: `v0.1.4-auth-nav-shell`.
 - [ ] Create AI-parser Git tag: `v0.1.4-ai-parser`.
 
 ---
@@ -147,7 +148,24 @@ Status legend:
 
 ---
 
-## 9. Tasks and Projects
+## 9. Authenticated Navigation Shell
+
+- [ ] Keep `/` as the public landing page.
+- [ ] Add logged-out navbar with Login and Try Aego CTA.
+- [ ] Make Try Aego route logged-out users to `/login`.
+- [ ] Make Try Aego route logged-in users to `/chat`.
+- [ ] Protect `/chat`, `/dashboard`, and `/accounts`.
+- [ ] Redirect unauthenticated feature access to `/login`.
+- [ ] Redirect logged-out users to `/` after sign-out.
+- [ ] Add consistent logged-in navbar with Chat, Dashboard, Accounts, and future tools.
+- [ ] Add generated profile/avatar button.
+- [ ] Add profile dropdown with Settings, Account, Usage, and Sign out placeholders.
+- [ ] Display app version consistently across pages.
+- [ ] Defer Google OAuth login and real OAuth profile pictures until later production-auth stage.
+
+---
+
+## 10. Tasks and Projects
 
 - [ ] Create tasks page.
 - [ ] Create project page.
@@ -158,7 +176,7 @@ Status legend:
 
 ---
 
-## 10. Chat Assistant MVP
+## 11. Chat Assistant MVP
 
 - [x] Create static chat UI shell.
 - [x] Create backend chat endpoint.
@@ -174,7 +192,7 @@ Status legend:
 
 ---
 
-## 11. Usage Credits
+## 12. Usage Credits
 
 - [ ] Add usage-credit database logic.
 - [ ] Add monthly usage check.
@@ -184,7 +202,7 @@ Status legend:
 
 ---
 
-## 12. Private Alpha Readiness
+## 13. Private Alpha Readiness
 
 - [ ] Test login.
 - [ ] Test account update through chat.
@@ -199,8 +217,12 @@ Status legend:
 
 ---
 
-## 13. Future / Not MVP
+## 14. Future / Not MVP
 
+- [ ] Google OAuth login.
+- [ ] Real OAuth profile pictures.
+- [ ] Uploaded profile pictures through Supabase Storage.
+- [ ] Production auth email templates and redirect URL hardening.
 - [ ] Payment gateway integration.
 - [ ] Mobile app.
 - [ ] Push notifications.
