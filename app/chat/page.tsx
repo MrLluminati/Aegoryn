@@ -1,3 +1,5 @@
+import { AppShell, NavPill, Panel } from "../../components/brand/AppShell";
+
 const sampleMessages = [
   {
     role: "user",
@@ -11,14 +13,19 @@ const sampleMessages = [
 
 export default function ChatPage() {
   return (
-    <main className="min-h-screen bg-aegoryn-black px-6 py-8 text-aegoryn-parchment">
-      <div className="mx-auto flex min-h-[calc(100vh-4rem)] max-w-4xl flex-col rounded-[2rem] border border-white/10 bg-white/[0.03]">
-        <header className="border-b border-white/10 p-6">
-          <p className="text-sm uppercase tracking-[0.35em] text-aegoryn-gold">Aego</p>
-          <h1 className="mt-2 text-3xl font-semibold">Chat Assistant Shell</h1>
-          <p className="mt-2 text-sm text-white/55">Static MVP scaffold. AI parser integration will be added later.</p>
-        </header>
-
+    <AppShell
+      eyebrow="Aego"
+      title="Chat Assistant"
+      subtitle="Static MVP shell. The next phase will connect this screen to the backend parser, clarification flow, and structured Supabase actions."
+      maxWidthClassName="max-w-4xl"
+      actions={
+        <>
+          <NavPill href="/dashboard">Dashboard</NavPill>
+          <NavPill href="/accounts">Accounts</NavPill>
+        </>
+      }
+    >
+      <Panel className="flex min-h-[60vh] flex-col p-0">
         <section className="flex-1 space-y-4 p-6">
           {sampleMessages.map((message, index) => (
             <div key={`${message.role}-${index}`} className={message.role === "user" ? "ml-auto max-w-xl rounded-3xl bg-aegoryn-gold p-4 text-black" : "mr-auto max-w-xl rounded-3xl border border-white/10 bg-black/35 p-4 text-white/75"}>
@@ -40,7 +47,7 @@ export default function ChatPage() {
             </button>
           </div>
         </footer>
-      </div>
-    </main>
+      </Panel>
+    </AppShell>
   );
 }
