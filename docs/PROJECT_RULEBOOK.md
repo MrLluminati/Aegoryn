@@ -87,6 +87,9 @@ Forbidden repository content:
 3. If the user records an expense without mentioning whether it came from savings, pocket money, or another bucket, the assistant must ask for the source.
 4. The assistant must not guess missing financial details.
 5. Every transaction should preserve the original user source text.
+6. Transactions must not be silently deleted.
+7. Incorrect financial entries should be corrected through one audit-preserving reversal entry.
+8. A transaction must not be reversed more than once.
 
 ---
 
@@ -153,6 +156,28 @@ Update:
 - `docs/CONTACTS_AND_DOMAINS.md`;
 - `.env.example`, if applicable;
 - `CHANGELOG.md`.
+
+### Supabase GitHub Integration Timing Rule
+
+The Supabase GitHub Integration must not be enabled during the early local MVP phase.
+
+Current safe workflow:
+
+1. migration files are created in `supabase/migrations`;
+2. the owner pulls changes locally;
+3. SQL is manually reviewed and run in Supabase SQL Editor;
+4. the app is verified locally;
+5. stable rollback tags are created and pushed.
+
+Supabase GitHub Integration may be considered only after:
+
+- `v0.1.4-ai-parser` is complete;
+- `v0.1.5-visual-analysis` is complete or at least stable;
+- private deployment on Vercel is active;
+- database migration workflow is stable;
+- the owner explicitly approves enabling the integration.
+
+Until then, do not click **Enable integration** in Supabase.
 
 ---
 
