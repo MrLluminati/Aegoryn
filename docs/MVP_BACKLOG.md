@@ -43,6 +43,7 @@ Status legend:
 - [x] Create app-scaffold Git tag: `v0.1.0-mvp-start`.
 - [x] Create Supabase schema Git tag: `v0.1.1-supabase-schema`.
 - [x] Create Supabase connection Git tag: `v0.1.2-supabase-connect`.
+- [ ] Create account-ledger Git tag: `v0.1.3-account-ledger`.
 
 ---
 
@@ -114,13 +115,15 @@ Status legend:
 
 ## 7. Account Management
 
-- [ ] Create accounts page.
-- [ ] Create transactions page.
-- [ ] Add manual transaction form.
-- [ ] Add money bucket view.
-- [ ] Add category handling.
-- [ ] Add balance update logic.
-- [ ] Preserve source text for transactions.
+- [x] Create accounts page.
+- [~] Create transactions page.
+- [x] Add manual transaction form.
+- [x] Add money bucket view.
+- [~] Add category handling.
+- [x] Add balance update logic.
+- [x] Preserve source text for transactions.
+- [ ] Verify manual transaction creation locally.
+- [ ] Add transaction deletion/reversal safety rule.
 
 ---
 
