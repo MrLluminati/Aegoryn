@@ -37,6 +37,7 @@ This project follows a human-readable changelog format inspired by Keep a Change
 - Supabase Row Level Security policy migration for user-owned records.
 - Supabase seed-data folder with safe README and generic placeholder seed template.
 - Supabase setup guide for migrations, RLS checks, and environment handling.
+- `v0.1.1-supabase-schema` Git tag for the Supabase schema and RLS baseline.
 
 ### Changed
 
@@ -51,6 +52,7 @@ This project follows a human-readable changelog format inspired by Keep a Change
 - Recorded successful production build for the initial Next.js scaffold.
 - Marked the app-scaffold rollback checkpoint as complete.
 - Updated database schema documentation to reference Supabase migration files, RLS policies, and seed templates.
+- Marked the Supabase schema rollback checkpoint as complete.
 
 ### Security
 
