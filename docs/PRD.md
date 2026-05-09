@@ -56,6 +56,8 @@ Version 0.1 must prove one thing:
 
 Primary input screen. The user enters natural language updates, the backend checks usage credits, calls the AI parser, validates the result, and writes structured data to the database.
 
+The product must remain chat-first. Manual forms may exist for testing, admin fallback, or correction flows, but the intended user experience is that users dump raw updates into the chat and Aego sorts them into the correct data structures.
+
 ### 4.3 Account Management
 
 Tracks bank accounts, balances, money buckets, income, expenses, transfers, and monthly summaries.
@@ -120,10 +122,48 @@ AI response must include:
 - Transactions
 - Tasks
 - Projects
+- Analysis
 
 ---
 
-## 7. Success Criteria
+## 7. Visual Analysis
+
+AegorynOS should include a Visual Analysis layer that converts structured records into understandable charts and insights.
+
+Initial analysis areas:
+
+- monthly spending;
+- category-wise expense split;
+- pocket-money burn-down;
+- savings trend;
+- bank-wise balance split;
+- AI-generated financial and productivity insights.
+
+---
+
+## 8. Future Expert Modules
+
+These are future monetizable product extensions and are not part of the early MVP.
+
+### 8.1 CA Mode — India First
+
+A Chartered Accountant-style assistant module for Indian users. It should help organize financial records, classify invoices/receipts, prepare tax and compliance checklists, track financial-year and assessment-year requirements, and assist with GST/income-tax documentation workflows.
+
+It must be framed as organizational and preparatory assistance, not a replacement for a licensed Chartered Accountant.
+
+### 8.2 Lawyer Mode — India First
+
+A Lawyer-style assistant module for Indian users. It should help organize legal documents, track case deadlines, create matter notes, support contract/document summaries, assist with legal drafting workflows, and structure compliance/case-management records.
+
+It must be framed as drafting, research, and productivity assistance, and not as a substitute for professional legal advice unless delivered through a compliant professional workflow.
+
+### 8.3 Expansion Direction
+
+Both expert modules should begin with India-native terminology, workflows, and jurisdictional assumptions. Later versions may add country-specific packs for universal expansion.
+
+---
+
+## 9. Success Criteria
 
 Version 0.1 succeeds if:
 
