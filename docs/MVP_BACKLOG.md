@@ -142,7 +142,7 @@ Status legend:
 - [x] Standardize card, form, and button styling.
 - [x] Add temporary AegorynOS identity mark or wordmark.
 - [x] Add favicon placeholder.
-- [ ] Verify branding consistency across home, login, dashboard, chat, and accounts.
+- [x] Verify branding consistency across home, login, dashboard, chat, and accounts.
 
 ---
 
