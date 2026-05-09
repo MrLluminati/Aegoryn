@@ -64,8 +64,8 @@ Status legend:
 
 ## 4. Supabase Setup
 
-- [ ] Create Supabase project.
-- [ ] Add Supabase environment values locally.
+- [x] Create Supabase project.
+- [x] Add Supabase environment values locally.
 - [x] Create database migration files.
 - [x] Add Row Level Security policy migration.
 - [x] Add generic seed-data template.
@@ -76,8 +76,9 @@ Status legend:
 - [x] Add account/bucket/transaction fetch helpers.
 - [x] Add local Supabase connection status page.
 - [x] Verify setup status page renders locally without Supabase env values.
-- [ ] Run migrations in Supabase.
-- [ ] Enable Row Level Security in deployed database.
+- [x] Verify setup status page detects configured local Supabase public environment values.
+- [x] Run migrations in Supabase.
+- [x] Enable Row Level Security in deployed database.
 - [ ] Test user-specific access policies.
 - [ ] Add local seed script for initial personal data.
 
