@@ -157,6 +157,28 @@ Update:
 - `.env.example`, if applicable;
 - `CHANGELOG.md`.
 
+### Supabase Connection Checklist
+
+Nothing additional needs to be connected in Supabase during the local MVP phase if the following are true:
+
+- project status is healthy;
+- Data API is enabled;
+- Supabase public URL/key are configured locally;
+- Auth test user exists;
+- RLS policies are enabled;
+- authenticated role grants have been applied;
+- dashboard and ledger can read/write records locally.
+
+Current non-blockers visible in Supabase:
+
+- GitHub repository not connected;
+- recent branch not configured;
+- Supabase migration tracking shows no migrations;
+- automated backups not configured on the free/local MVP workflow;
+- compute plan is Nano.
+
+These are not blockers for local MVP development.
+
 ### Supabase GitHub Integration Timing Rule
 
 The Supabase GitHub Integration must not be enabled during the early local MVP phase.
@@ -178,6 +200,19 @@ Supabase GitHub Integration may be considered only after:
 - the owner explicitly approves enabling the integration.
 
 Until then, do not click **Enable integration** in Supabase.
+
+### Supabase Production-Readiness Checklist
+
+Before public beta, paid users, or materially important personal records, review and enable as appropriate:
+
+1. repository/deployment integration after the migration workflow is stable;
+2. database backup strategy;
+3. point-in-time recovery or export strategy if available on the chosen plan;
+4. production environment variables in Vercel or another deployment provider;
+5. Supabase Auth email templates and redirect URLs;
+6. usage/cost monitoring;
+7. stricter RLS regression tests;
+8. migration history tracking through CLI or a controlled deployment workflow.
 
 ---
 
