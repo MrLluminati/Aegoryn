@@ -50,6 +50,7 @@ This project follows a human-readable changelog format inspired by Keep a Change
 - Manual transaction entry form with account, bucket, category, description, and source-text fields.
 - Account balance and money-bucket balance update logic for manual income and expense entries.
 - Ledger reversal flow that creates audit-preserving correction entries instead of silently deleting transactions.
+- MVP brand guidelines document for the lightweight AegorynOS brand foundation.
 
 ### Changed
 
@@ -83,6 +84,8 @@ This project follows a human-readable changelog format inspired by Keep a Change
 - Started `v0.1.3-account-ledger` account-management phase.
 - Recorded successful local manual transaction verification through `/accounts`.
 - Updated account ledger UI to explain the no-silent-delete safety rule.
+- Added a brand-foundation checkpoint to the roadmap before the AI parser phase.
+- Updated MVP backlog to track brand-foundation tasks and future rollback tag.
 
 ### Security
 
