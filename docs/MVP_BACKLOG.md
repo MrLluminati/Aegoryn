@@ -46,6 +46,7 @@ Status legend:
 - [x] Create Supabase connection Git tag: `v0.1.2-supabase-connect`.
 - [x] Create account-ledger Git tag: `v0.1.3-account-ledger`.
 - [x] Create brand-foundation Git tag: `v0.1.3-brand-foundation`.
+- [ ] Create AI-parser Git tag: `v0.1.4-ai-parser`.
 
 ---
 
@@ -160,15 +161,16 @@ Status legend:
 ## 10. Chat Assistant MVP
 
 - [x] Create static chat UI shell.
-- [ ] Create backend chat endpoint.
-- [ ] Create AI parser schema.
-- [ ] Add classification logic.
+- [x] Create backend chat endpoint.
+- [x] Create AI parser schema.
+- [x] Add classification logic.
 - [x] Add clarification-message example.
 - [ ] Add clarification handling.
 - [ ] Add action validation.
 - [ ] Save AI messages.
 - [ ] Save structured actions.
 - [ ] Add AI-confirmed money-bucket creation flow.
+- [ ] Verify parser locally with account-management prompts.
 
 ---
 
