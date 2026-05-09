@@ -287,11 +287,11 @@ If the assistant or any AI agent is unable to update the GitHub repository direc
 
 In such cases, the assistant must provide:
 
-1. a ZIP file containing the changed files or full repo-ready patch structure;
-2. a PowerShell command/script that extracts the ZIP into the local repository;
-3. Git commands to stage, commit, and push the changes;
+1. a downloadable ZIP file containing the changed files or full repo-ready patch structure;
+2. a PowerShell 7 script intended to be run from the VS Code terminal;
+3. Git commands inside the script to stage, commit, push, and verify the update;
 4. a clear commit message suggestion;
-5. a summary of what files are being changed.
+5. a summary of changed files and expected verification output.
 
 The user's local repository path is:
 
@@ -305,15 +305,19 @@ The user's default downloads folder should be assumed as the ZIP download locati
 $env:USERPROFILE\Downloads
 ```
 
-The fallback PowerShell workflow should normally:
+The fallback PowerShell 7 workflow must normally:
 
 1. set the ZIP path from the Downloads folder;
 2. set the repository path to `D:\Coding\Repos\Aegoryn`;
-3. extract the ZIP to a temporary folder;
-4. copy the extracted files into the local repo;
-5. run `git status`;
-6. stage changed files;
-7. commit with the suggested message;
-8. push to the current branch.
+3. verify that the repository path exists;
+4. extract the ZIP to a temporary folder;
+5. copy the extracted files into the local repo with overwrite enabled;
+6. run `git status`;
+7. stage changed files with `git add`;
+8. commit with the suggested message;
+9. push to the current branch;
+10. run `git status` again;
+11. run `git log --oneline -5` or another short verification command;
+12. where relevant, instruct the owner to run `npm run build` before tagging.
 
-Sensitive values must still not be included in the ZIP.
+Sensitive values must still not be included in the ZIP or script.
