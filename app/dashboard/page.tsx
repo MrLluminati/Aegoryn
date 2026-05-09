@@ -41,7 +41,7 @@ export default function DashboardPage() {
       const [accountsResult, bucketsResult, transactionsResult] = await Promise.all([
         supabase.from("accounts").select("*").order("is_primary", { ascending: false }).order("account_name"),
         supabase.from("money_buckets").select("*").order("bucket_month", { ascending: false }),
-        supabase.from("transactions").select("*").order("transaction_date", { ascending: false }).limit(5)
+        supabase.from("transactions").select("*").order("transaction_date", { ascending: false }).limit(10)
       ]);
 
       const firstError = accountsResult.error || bucketsResult.error || transactionsResult.error;
@@ -61,14 +61,20 @@ export default function DashboardPage() {
   }, []);
 
   const pocketMoney = useMemo(() => buckets.find((bucket) => bucket.bucket_name === "Pocket Money"), [buckets]);
-  const pocketTransactions = useMemo(
-    () => transactions.filter((transaction) => transaction.category === "pocket_money" || transaction.category === "petrol"),
-    [transactions]
+  const totalBalance = useMemo(
+    () => accounts.reduce((sum, account) => sum + Number(account.current_balance), 0),
+    [accounts]
   );
-  const pocketSpent = useMemo(
-    () => pocketTransactions.filter((transaction) => transaction.transaction_type === "expense").reduce((sum, transaction) => sum + Number(transaction.amount), 0),
-    [pocketTransactions]
-  );
+  const pocketSpent = useMemo(() => {
+    if (!pocketMoney) {
+      return 0;
+    }
+
+    return transactions
+      .filter((transaction) => transaction.money_bucket_id === pocketMoney.id && transaction.transaction_type === "expense")
+      .reduce((sum, transaction) => sum + Number(transaction.amount), 0);
+  }, [pocketMoney, transactions]);
+  const savingsTillNow = totalBalance - Number(pocketMoney?.current_balance ?? 0);
 
   async function handleSignOut() {
     const supabase = createBrowserSupabaseClient();
@@ -86,8 +92,11 @@ export default function DashboardPage() {
             <p className="mt-2 text-white/55">Supabase-connected private assistant dashboard.</p>
           </div>
           <div className="flex flex-wrap items-center gap-3">
+            <Link className="rounded-full border border-white/15 px-4 py-2 text-sm text-white/70 hover:border-aegoryn-gold hover:text-aegoryn-gold" href="/accounts">
+              Accounts
+            </Link>
             <div className="rounded-full border border-aegoryn-gold/40 px-4 py-2 text-sm text-aegoryn-gold">
-              v0.1.2-supabase-connect
+              v0.1.3-account-ledger
             </div>
             {isSignedIn ? (
               <button className="rounded-full border border-white/15 px-4 py-2 text-sm text-white/70 hover:border-aegoryn-gold hover:text-aegoryn-gold" onClick={handleSignOut}>
@@ -106,7 +115,12 @@ export default function DashboardPage() {
           <p className="mt-2 text-lg font-semibold text-aegoryn-gold">{status}</p>
         </section>
 
-        <section className="grid gap-4 md:grid-cols-3">
+        <section className="grid gap-4 md:grid-cols-4">
+          <article className="rounded-3xl border border-white/10 bg-white/[0.03] p-5">
+            <p className="text-sm text-white/50">Savings Till Now</p>
+            <p className="mt-3 text-3xl font-semibold">{currencyFormatter.format(savingsTillNow)}</p>
+            <p className="mt-2 text-sm text-aegoryn-gold">Total balance minus pocket money</p>
+          </article>
           {accounts.length > 0 ? (
             accounts.map((account) => (
               <article key={account.id} className="rounded-3xl border border-white/10 bg-white/[0.03] p-5">
