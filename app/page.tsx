@@ -30,12 +30,7 @@ export default function HomePage() {
       eyebrow="Private AI Command System"
       title="Turn scattered life updates into structured records."
       subtitle="AegorynOS is an AI-first personal assistant that classifies natural-language updates, asks for missing details, and organizes money, tasks, projects, and records into a private command dashboard."
-      actions={
-        <>
-          <NavPill href="/chat">Chat</NavPill>
-          <NavPill href="/dashboard" variant="primary">Open Dashboard</NavPill>
-        </>
-      }
+      navVariant="landing"
     >
       <section className="grid items-stretch gap-6 lg:grid-cols-[1fr_0.85fr]">
         <Panel className="flex flex-col justify-between">
@@ -53,18 +48,18 @@ export default function HomePage() {
 
         <Panel>
           <p className="text-sm uppercase tracking-[0.3em] text-aegoryn-gold">MVP Principle</p>
-          <h2 className="mt-3 text-2xl font-semibold">Chat first. Manual fallback only.</h2>
+          <h2 className="mt-3 text-2xl font-semibold">Login first. Chat-led records after.</h2>
           <p className="mt-4 text-sm leading-7 text-white/60">
-            Forms are available for verification and correction, but the long-term product experience is data-dumping into chat and automatic structuring into the correct dashboard areas.
+            AegorynOS protects private records behind authentication. Once signed in, Aego becomes the primary interface for dumping updates and structuring them into the correct dashboard areas.
           </p>
           <div className="mt-6 flex flex-wrap gap-3">
-            <NavPill href="/accounts">Ledger</NavPill>
+            <NavPill href="/login" variant="primary">Try Aego</NavPill>
             <NavPill href="/login">Login</NavPill>
           </div>
         </Panel>
       </section>
 
-      <section className="mt-6 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+      <section id="features" className="mt-6 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
         {modules.map((module) => {
           const Icon = module.icon;
           return (
