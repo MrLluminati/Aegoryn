@@ -149,7 +149,19 @@ Search sources to use before launch:
 
 ---
 
-## 9. Credential Handling Rule
+## 9. Development Environment Register
+
+| Item | Current Entry | Notes |
+|---|---|---|
+| Primary IDE | Visual Studio Code | Future setup/debug instructions should assume VS Code. |
+| Terminal | PowerShell on Windows | Commands should be PowerShell-compatible unless stated otherwise. |
+| Local Repo Path | `D:\Coding\Repos\Aegoryn` | Primary local working directory. |
+| Package Manager | npm | Current lock file is `package-lock.json`. |
+| Local Dev Server | Next.js dev server | Default URL: `http://localhost:3000`. |
+
+---
+
+## 10. Credential Handling Rule
 
 Never commit the following to GitHub:
 
@@ -167,19 +179,20 @@ Use `.env.local` for local development and platform environment variables for de
 
 ---
 
-## 10. Decision Log
+## 11. Decision Log
 
 | Date | Decision | Reason |
 |---|---|---|
 | 2026-05-08 | Chose Aegoryn as final working brand direction | Cleaner preliminary clearance candidate; premium guardian/aegis-inspired identity. |
 | 2026-05-08 | Chose tagline: Guard your records. Command your life. | Matches records-first and command-system positioning. |
 | 2026-05-08 | Repository created: MrLluminati/Aegoryn | Fresh repo for AegorynOS development. |
+| 2026-05-09 | Confirmed VS Code as primary development environment | Future setup/debug instructions should assume VS Code with PowerShell on Windows. |
 
 ---
 
-## 11. Future Change Log
+## 12. Future Change Log
 
-Use this section if the brand name, assistant name, domain, contact email, company name, or product positioning changes.
+Use this section if the brand name, assistant name, domain, contact email, company name, product positioning, or development environment changes.
 
 | Date | Change | Old Value | New Value | Reason |
 |---|---|---|---|---|
