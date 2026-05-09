@@ -42,6 +42,8 @@ This project follows a human-readable changelog format inspired by Keep a Change
 - Supabase setup status page at `/setup/supabase`.
 - Initial TypeScript row types for accounts, money buckets, and transactions.
 - Account, money bucket, and recent transaction fetch helpers.
+- Supabase login page at `/login`.
+- Recent transactions section on the dashboard.
 
 ### Changed
 
@@ -68,6 +70,7 @@ This project follows a human-readable changelog format inspired by Keep a Change
 - Recorded creation of the initial test Auth user for RLS and seed-data testing.
 - Recorded successful seeding of initial account-management records for the test user.
 - Recorded verification of seeded account-management records in Supabase.
+- Updated `/dashboard` to load account, pocket-money, and recent-transaction records from Supabase after sign-in.
 
 ### Security
 
