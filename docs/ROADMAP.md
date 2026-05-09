@@ -53,27 +53,61 @@ This is a lightweight UI/brand consistency checkpoint before the AI parser phase
 
 ## Phase 7 — Chat Assistant MVP
 
-- Add chat input
-- Add backend parser endpoint
-- Add structured output schema
-- Add clarification handling
-- Save AI message logs
+- Add chat input.
+- Add backend parser endpoint.
+- Add structured output schema.
+- Add deterministic MVP parser before paid AI calls.
+- Add account-management classification.
+- Add missing-detail detection.
+- Add clarification handling.
+- Add action validation before any database write.
+- Add confirmation step before saving structured actions.
+- Save AI message logs.
 
-## Phase 8 — Usage Credits
+## Phase 8 — Authenticated Navigation Shell
+
+This checkpoint must happen before chat-based database writes are enabled.
+
+- Keep `/` as the public landing page.
+- Make login mandatory before using product features.
+- Protect `/chat`, `/dashboard`, and `/accounts`.
+- Redirect unauthenticated feature access to `/login`.
+- Redirect logged-out users to `/` after sign-out.
+- Add a consistent navbar across landing and app pages.
+- Logged-out navbar should show product/marketing links, `Login`, and `Try Aego`.
+- `Try Aego` should route logged-out users to `/login` and logged-in users to `/chat`.
+- Logged-in navbar should show tool links: `Chat`, `Dashboard`, `Accounts`, and future tools.
+- Add generated profile/avatar button for logged-in users.
+- Add profile dropdown with Settings, Account, Usage, and Sign out placeholders.
+- Display the current app version consistently across pages, preferably as a navbar pill or footer/system badge.
+
+### Deferred Authentication Enhancements
+
+Google login and real OAuth profile pictures are deferred until after the email/password auth flow, protected routes, and core parser/save workflow are stable.
+
+Later auth enhancements:
+
+- Google OAuth sign-in through Supabase Auth.
+- Additional OAuth providers if needed.
+- Real profile pictures from OAuth metadata.
+- Uploaded profile pictures through Supabase Storage.
+- Auth email templates and production redirect URL hardening.
+
+## Phase 9 — Usage Credits
 
 - Add monthly usage record
 - Add credit check before AI call
 - Add usage display
 - Add blocked-state UI
 
-## Phase 9 — Private Deployment
+## Phase 10 — Private Deployment
 
 - Deploy on Vercel
 - Connect Supabase
 - Seed personal data
 - Test daily tracking
 
-## Phase 10 — Public-Beta Preparation
+## Phase 11 — Public-Beta Preparation
 
 - Payment architecture
 - Razorpay/Stripe planning
@@ -82,7 +116,7 @@ This is a lightweight UI/brand consistency checkpoint before the AI parser phase
 - Admin dashboard
 - Error logging
 
-## Phase 11 — Visual Analysis
+## Phase 12 — Visual Analysis
 
 - Add `/analysis` page.
 - Add monthly spending charts.
@@ -92,7 +126,7 @@ This is a lightweight UI/brand consistency checkpoint before the AI parser phase
 - Add bank-wise balance split.
 - Add AI-generated insight summaries based on stored records.
 
-## Phase 12 — Expert Assistant Modules
+## Phase 13 — Expert Assistant Modules
 
 These modules are future monetizable product extensions and are not part of the early MVP.
 
