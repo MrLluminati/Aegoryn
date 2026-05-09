@@ -5,7 +5,7 @@ This guide explains how Supabase should be prepared for the AegorynOS MVP.
 Current version target:
 
 ```text
-v0.1.1-supabase-schema
+v0.1.2-supabase-connect
 ```
 
 ---
@@ -86,9 +86,51 @@ or production deployment environment variables.
 
 Never commit real values.
 
+Required public values for local connection testing:
+
+```text
+NEXT_PUBLIC_SUPABASE_URL
+NEXT_PUBLIC_SUPABASE_ANON_KEY
+```
+
+After adding or changing `.env.local`, restart the dev server.
+
 ---
 
-## 6. RLS Test Checklist
+## 6. Local Connection Status Page
+
+A local setup-status page has been added at:
+
+```text
+/setup/supabase
+```
+
+Use it to confirm whether the app can see the required public Supabase environment values.
+
+Expected local URL:
+
+```text
+http://localhost:3000/setup/supabase
+```
+
+This page does not display secret values. It only confirms whether required values are configured.
+
+---
+
+## 7. Supabase Client Helpers
+
+Connection helper files:
+
+| File | Purpose |
+|---|---|
+| `lib/supabase/env.ts` | Reads and validates safe public Supabase environment values. |
+| `lib/supabase/client.ts` | Creates the browser Supabase client. |
+| `lib/supabase/types.ts` | Stores initial TypeScript types for account-related rows. |
+| `lib/supabase/accounts.ts` | Provides account, bucket, and recent-transaction fetch helpers. |
+
+---
+
+## 8. RLS Test Checklist
 
 Before connecting real app screens to Supabase:
 
@@ -100,11 +142,12 @@ Before connecting real app screens to Supabase:
 
 ---
 
-## 7. Next Step After Schema
+## 9. Next Step After Connection
 
-After the schema is tested:
+After the project is connected locally:
 
-1. create typed database helpers;
-2. connect dashboard to real account records;
-3. build authentication screens;
-4. create the first protected dashboard route.
+1. run migrations in Supabase;
+2. create a test user;
+3. test the local setup status page;
+4. build authentication screens;
+5. connect dashboard to real account records.
