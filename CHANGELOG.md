@@ -44,6 +44,7 @@ This project follows a human-readable changelog format inspired by Keep a Change
 - Account, money bucket, and recent transaction fetch helpers.
 - Supabase login page at `/login`.
 - Recent transactions section on the dashboard.
+- Supabase API role grants migration for authenticated Data API access.
 
 ### Changed
 
@@ -71,6 +72,7 @@ This project follows a human-readable changelog format inspired by Keep a Change
 - Recorded successful seeding of initial account-management records for the test user.
 - Recorded verification of seeded account-management records in Supabase.
 - Updated `/dashboard` to load account, pocket-money, and recent-transaction records from Supabase after sign-in.
+- Recorded successful execution of the authenticated role grants migration in Supabase.
 
 ### Security
 
@@ -78,6 +80,7 @@ This project follows a human-readable changelog format inspired by Keep a Change
 - Added Row Level Security policy migration for all MVP user-data tables.
 - Added Supabase secret keys and database passwords to the explicit do-not-commit list in the project registry.
 - Confirmed RLS policy migration ran successfully in Supabase.
+- Granted authenticated Data API access while keeping anonymous users blocked from private MVP tables.
 
 ---
 
