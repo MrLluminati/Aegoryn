@@ -156,11 +156,23 @@ function classifyText(text: string): { classification: AegoClassification; inten
   return { classification: "unknown", intent: "unknown" };
 }
 
+function formatMissingDetails(missing: string[]): string {
+  if (missing.length === 1) {
+    return missing[0];
+  }
+
+  if (missing.length === 2) {
+    return `${missing[0]} and ${missing[1]}`;
+  }
+
+  return `${missing.slice(0, -1).join(", ")}, and ${missing[missing.length - 1]}`;
+}
+
 function buildClarification(transaction: ParsedTransaction): string | null {
   const missing: string[] = [];
 
   if (!transaction.amount) {
-    missing.push("amount");
+    missing.push("the amount");
   }
 
   if (!transaction.type) {
@@ -179,7 +191,7 @@ function buildClarification(transaction: ParsedTransaction): string | null {
     return null;
   }
 
-  return `Please clarify ${missing.join(", ")}.`;
+  return `Please clarify ${formatMissingDetails(missing)}.`;
 }
 
 export function parseAegoCommand(input: string): AegoParserResult {
