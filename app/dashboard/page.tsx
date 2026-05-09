@@ -61,6 +61,7 @@ export default function DashboardPage() {
   }, []);
 
   const pocketMoney = useMemo(() => buckets.find((bucket) => bucket.bucket_name === "Pocket Money"), [buckets]);
+  const savingsBucket = useMemo(() => buckets.find((bucket) => bucket.bucket_name === "Savings"), [buckets]);
   const totalBalance = useMemo(
     () => accounts.reduce((sum, account) => sum + Number(account.current_balance), 0),
     [accounts]
@@ -74,7 +75,9 @@ export default function DashboardPage() {
       .filter((transaction) => transaction.money_bucket_id === pocketMoney.id && transaction.transaction_type === "expense")
       .reduce((sum, transaction) => sum + Number(transaction.amount), 0);
   }, [pocketMoney, transactions]);
-  const savingsTillNow = totalBalance - Number(pocketMoney?.current_balance ?? 0);
+  const calculatedSavings = totalBalance - Number(pocketMoney?.current_balance ?? 0);
+  const savingsTillNow = Number(savingsBucket?.current_balance ?? calculatedSavings);
+  const savingsNote = savingsBucket ? "Savings bucket balance" : "Temporary formula: total balance minus pocket money";
 
   async function handleSignOut() {
     const supabase = createBrowserSupabaseClient();
@@ -106,7 +109,7 @@ export default function DashboardPage() {
         <MetricCard
           label="Savings Till Now"
           value={currencyFormatter.format(savingsTillNow)}
-          note="Total balance minus pocket money"
+          note={savingsNote}
         />
         {accounts.length > 0 ? (
           accounts.map((account) => (
