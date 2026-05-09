@@ -64,6 +64,7 @@ This project follows a human-readable changelog format inspired by Keep a Change
 - Updated setup documentation to prioritize VS Code workflow and current local routes.
 - Recorded Supabase project creation details in the project registry without storing secrets or keys.
 - Recorded successful execution of Supabase schema and RLS migrations in the hosted Supabase project.
+- Recorded Supabase Table Editor verification of all MVP tables.
 
 ### Security
 
