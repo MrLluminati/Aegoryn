@@ -122,7 +122,7 @@ Status legend:
 - [~] Add category handling.
 - [x] Add balance update logic.
 - [x] Preserve source text for transactions.
-- [ ] Verify manual transaction creation locally.
+- [x] Verify manual transaction creation locally.
 - [ ] Add transaction deletion/reversal safety rule.
 
 ---
