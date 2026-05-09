@@ -83,13 +83,18 @@ Forbidden repository content:
 ## Article 5 — Account Management Rules
 
 1. The app must support bank accounts, money buckets, transactions, and monthly summaries.
-2. If the user records an expense without mentioning the bank account, the assistant must ask which bank account was used.
-3. If the user records an expense without mentioning whether it came from savings, pocket money, or another bucket, the assistant must ask for the source.
-4. The assistant must not guess missing financial details.
-5. Every transaction should preserve the original user source text.
-6. Transactions must not be silently deleted.
-7. Incorrect financial entries should be corrected through one audit-preserving reversal entry.
-8. A transaction must not be reversed more than once.
+2. A bank account represents where money physically sits.
+3. A money bucket represents the source, purpose, or allocation of that money.
+4. Default money buckets should include at least `Pocket Money` and `Savings`.
+5. If the user records an expense without mentioning the bank account, the assistant must ask which bank account was used.
+6. If the user records an expense without mentioning whether it came from savings, pocket money, or another bucket, the assistant must ask for the source.
+7. The assistant must not guess missing financial details.
+8. Every transaction should preserve the original user source text.
+9. Transactions must not be silently deleted.
+10. Incorrect financial entries should be corrected through one audit-preserving reversal entry.
+11. A transaction must not be reversed more than once.
+12. Aego may suggest creating a new money bucket when the user describes a new allocation or purpose, but it must ask for confirmation before creating the bucket or reallocating money.
+13. AI-created buckets must preserve the original user source text and must be tied to the authenticated user.
 
 ---
 
