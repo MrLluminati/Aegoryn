@@ -138,10 +138,10 @@ Status legend:
 ## 8. Brand Foundation
 
 - [x] Create lightweight MVP brand guidelines.
-- [~] Standardize shared page shell.
-- [~] Standardize card, form, and button styling.
-- [~] Add temporary AegorynOS identity mark or wordmark.
-- [ ] Add favicon placeholder.
+- [x] Standardize shared page shell.
+- [x] Standardize card, form, and button styling.
+- [x] Add temporary AegorynOS identity mark or wordmark.
+- [x] Add favicon placeholder.
 - [ ] Verify branding consistency across home, login, dashboard, chat, and accounts.
 
 ---
