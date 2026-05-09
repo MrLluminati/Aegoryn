@@ -89,7 +89,7 @@ Status legend:
 - [x] Verify seeded account-management data in Supabase.
 - [x] Add explicit authenticated role grants for Data API access.
 - [x] Add Savings bucket seed migration.
-- [ ] Run Savings bucket seed migration in Supabase.
+- [x] Run Savings bucket seed migration in Supabase.
 
 ---
 
@@ -131,7 +131,7 @@ Status legend:
 - [x] Add transaction deletion/reversal safety rule.
 - [x] Verify transaction reversal locally.
 - [x] Add Savings as required default money-bucket rule.
-- [ ] Verify Savings bucket appears in account ledger dropdown.
+- [x] Verify Savings bucket appears in account ledger dropdown.
 
 ---
 
