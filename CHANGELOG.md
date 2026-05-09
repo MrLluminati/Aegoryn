@@ -49,6 +49,7 @@ This project follows a human-readable changelog format inspired by Keep a Change
 - Supabase-backed account ledger page at `/accounts`.
 - Manual transaction entry form with account, bucket, category, description, and source-text fields.
 - Account balance and money-bucket balance update logic for manual income and expense entries.
+- Ledger reversal flow that creates audit-preserving correction entries instead of silently deleting transactions.
 
 ### Changed
 
@@ -81,6 +82,7 @@ This project follows a human-readable changelog format inspired by Keep a Change
 - Recorded successful production build before creating the `v0.1.2-supabase-connect` rollback tag.
 - Started `v0.1.3-account-ledger` account-management phase.
 - Recorded successful local manual transaction verification through `/accounts`.
+- Updated account ledger UI to explain the no-silent-delete safety rule.
 
 ### Security
 
@@ -89,6 +91,7 @@ This project follows a human-readable changelog format inspired by Keep a Change
 - Added Supabase secret keys and database passwords to the explicit do-not-commit list in the project registry.
 - Confirmed RLS policy migration ran successfully in Supabase.
 - Granted authenticated Data API access while keeping anonymous users blocked from private MVP tables.
+- Preserved financial audit history by using reversal transactions instead of destructive deletion.
 
 ---
 
