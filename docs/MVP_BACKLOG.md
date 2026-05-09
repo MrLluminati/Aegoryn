@@ -42,7 +42,7 @@ Status legend:
 - [x] Push baseline tag to GitHub.
 - [x] Create app-scaffold Git tag: `v0.1.0-mvp-start`.
 - [x] Create Supabase schema Git tag: `v0.1.1-supabase-schema`.
-- [ ] Create Supabase connection Git tag: `v0.1.2-supabase-connect`.
+- [x] Create Supabase connection Git tag: `v0.1.2-supabase-connect`.
 
 ---
 
@@ -167,7 +167,7 @@ Status legend:
 - [ ] Test missing money-source clarification.
 - [ ] Test task creation through chat.
 - [ ] Test project update through chat.
-- [ ] Test dashboard updates.
+- [x] Test dashboard updates.
 - [ ] Test usage credit blocking.
 - [ ] Verify no secrets are committed.
 - [ ] Verify documentation is current.
