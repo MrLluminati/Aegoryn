@@ -73,6 +73,7 @@ This project follows a human-readable changelog format inspired by Keep a Change
 - Recorded verification of seeded account-management records in Supabase.
 - Updated `/dashboard` to load account, pocket-money, and recent-transaction records from Supabase after sign-in.
 - Recorded successful execution of the authenticated role grants migration in Supabase.
+- Recorded successful dashboard verification with live Supabase account, pocket-money, and recent-transaction records.
 
 ### Security
 
