@@ -44,7 +44,7 @@ Status legend:
 - [x] Create app-scaffold Git tag: `v0.1.0-mvp-start`.
 - [x] Create Supabase schema Git tag: `v0.1.1-supabase-schema`.
 - [x] Create Supabase connection Git tag: `v0.1.2-supabase-connect`.
-- [ ] Create account-ledger Git tag: `v0.1.3-account-ledger`.
+- [x] Create account-ledger Git tag: `v0.1.3-account-ledger`.
 - [ ] Create brand-foundation Git tag: `v0.1.3-brand-foundation`.
 
 ---
