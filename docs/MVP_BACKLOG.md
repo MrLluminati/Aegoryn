@@ -75,6 +75,7 @@ Status legend:
 - [x] Add initial Supabase row types.
 - [x] Add account/bucket/transaction fetch helpers.
 - [x] Add local Supabase connection status page.
+- [x] Verify setup status page renders locally without Supabase env values.
 - [ ] Run migrations in Supabase.
 - [ ] Enable Row Level Security in deployed database.
 - [ ] Test user-specific access policies.
