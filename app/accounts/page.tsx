@@ -67,6 +67,15 @@ function isReversalTransaction(transaction: Transaction): boolean {
   );
 }
 
+function hasExistingReversal(originalTransaction: Transaction, allTransactions: Transaction[]): boolean {
+  return allTransactions.some(
+    (transaction) =>
+      transaction.id !== originalTransaction.id &&
+      isReversalTransaction(transaction) &&
+      Boolean(transaction.source_text?.includes(`Original transaction id: ${originalTransaction.id}`))
+  );
+}
+
 export default function AccountsPage() {
   const [accounts, setAccounts] = useState<Account[]>([]);
   const [buckets, setBuckets] = useState<MoneyBucket[]>([]);
@@ -224,7 +233,12 @@ export default function AccountsPage() {
 
   async function handleReverseTransaction(transaction: Transaction) {
     if (isReversalTransaction(transaction)) {
-      setStatus("This transaction already appears to be a reversal entry. Create a fresh correction instead.");
+      setStatus("This transaction is a reversal entry. Create a fresh correction instead.");
+      return;
+    }
+
+    if (hasExistingReversal(transaction, transactions)) {
+      setStatus("This transaction has already been reversed once. Multiple reversals are blocked to prevent balance distortion.");
       return;
     }
 
@@ -338,7 +352,7 @@ export default function AccountsPage() {
         <section className="mb-6 rounded-3xl border border-aegoryn-gold/20 bg-aegoryn-gold/[0.05] p-5">
           <p className="text-sm uppercase tracking-[0.3em] text-aegoryn-gold">Ledger Safety Rule</p>
           <p className="mt-3 text-sm leading-6 text-white/65">
-            Transactions are not silently deleted. Incorrect entries should be corrected through reversal entries so the audit trail remains intact.
+            Transactions are not silently deleted. Incorrect entries should be corrected through one reversal entry so the audit trail remains intact and balances remain accurate.
           </p>
         </section>
 
@@ -477,6 +491,7 @@ export default function AccountsPage() {
                   const account = accounts.find((item) => item.id === transaction.account_id);
                   const bucket = buckets.find((item) => item.id === transaction.money_bucket_id);
                   const reversal = isReversalTransaction(transaction);
+                  const alreadyReversed = hasExistingReversal(transaction, transactions);
 
                   return (
                     <div key={transaction.id} className="rounded-2xl bg-black/30 p-4">
@@ -488,10 +503,11 @@ export default function AccountsPage() {
                             {bucket ? ` · ${bucket.bucket_name}` : ""}
                           </p>
                           {reversal ? <p className="mt-2 text-xs text-aegoryn-gold">Audit correction / reversal entry</p> : null}
+                          {!reversal && alreadyReversed ? <p className="mt-2 text-xs text-aegoryn-gold">Already reversed once</p> : null}
                         </div>
                         <div className="flex flex-col items-start gap-2 md:items-end">
                           <p className="text-lg font-semibold text-aegoryn-gold">{currencyFormatter.format(Number(transaction.amount))}</p>
-                          {!reversal ? (
+                          {!reversal && !alreadyReversed ? (
                             <button
                               className="rounded-full border border-white/15 px-3 py-1 text-xs text-white/60 hover:border-aegoryn-gold hover:text-aegoryn-gold disabled:opacity-60"
                               disabled={reversingId === transaction.id}
