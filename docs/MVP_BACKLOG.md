@@ -88,6 +88,8 @@ Status legend:
 - [x] Seed initial account-management data for test user.
 - [x] Verify seeded account-management data in Supabase.
 - [x] Add explicit authenticated role grants for Data API access.
+- [x] Add Savings bucket seed migration.
+- [ ] Run Savings bucket seed migration in Supabase.
 
 ---
 
@@ -112,6 +114,7 @@ Status legend:
 - [ ] Add AI usage card.
 - [x] Connect dashboard to database.
 - [x] Verify dashboard loads Supabase account, pocket-money, and transaction records.
+- [x] Use Savings bucket for Savings Till Now when available.
 
 ---
 
@@ -127,6 +130,8 @@ Status legend:
 - [x] Verify manual transaction creation locally.
 - [x] Add transaction deletion/reversal safety rule.
 - [x] Verify transaction reversal locally.
+- [x] Add Savings as required default money-bucket rule.
+- [ ] Verify Savings bucket appears in account ledger dropdown.
 
 ---
 
@@ -163,6 +168,7 @@ Status legend:
 - [ ] Add action validation.
 - [ ] Save AI messages.
 - [ ] Save structured actions.
+- [ ] Add AI-confirmed money-bucket creation flow.
 
 ---
 
