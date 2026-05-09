@@ -67,6 +67,7 @@ This project follows a human-readable changelog format inspired by Keep a Change
 - Recorded Supabase Table Editor verification of all MVP tables.
 - Recorded creation of the initial test Auth user for RLS and seed-data testing.
 - Recorded successful seeding of initial account-management records for the test user.
+- Recorded verification of seeded account-management records in Supabase.
 
 ### Security
 
