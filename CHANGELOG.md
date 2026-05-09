@@ -59,6 +59,7 @@ This project follows a human-readable changelog format inspired by Keep a Change
 - Marked the Supabase schema rollback checkpoint as complete.
 - Updated Supabase setup documentation for local connection testing and helper files.
 - Updated MVP backlog to reflect Supabase connection helper progress.
+- Recorded successful local verification that `/setup/supabase` renders without Supabase environment values and shows the expected not-configured state.
 
 ### Security
 
