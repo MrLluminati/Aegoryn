@@ -1,4 +1,4 @@
-import { hasSupabasePublicEnv } from "@/lib/supabase/env";
+import { hasSupabasePublicEnv } from "../../../lib/supabase/env";
 
 export default function SupabaseSetupPage() {
   const isConfigured = hasSupabasePublicEnv();
