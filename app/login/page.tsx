@@ -1,8 +1,8 @@
 "use client";
 
-import { FormEvent, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { AppShell, NavPill, Panel, fieldClassName, primaryButtonClassName } from "../../components/brand/AppShell";
+import { AppShell, Panel, fieldClassName, primaryButtonClassName } from "../../components/brand/AppShell";
 import { createBrowserSupabaseClient } from "../../lib/supabase/client";
 
 export default function LoginPage() {
@@ -11,6 +11,19 @@ export default function LoginPage() {
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    const supabase = createBrowserSupabaseClient();
+
+    async function redirectIfSignedIn() {
+      const { data } = await supabase.auth.getSession();
+      if (data.session) {
+        router.replace("/chat");
+      }
+    }
+
+    redirectIfSignedIn();
+  }, [router]);
 
   async function handleLogin(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -26,7 +39,7 @@ export default function LoginPage() {
         return;
       }
 
-      router.push("/dashboard");
+      router.push("/chat");
       router.refresh();
     } catch (error) {
       setMessage(
@@ -43,14 +56,8 @@ export default function LoginPage() {
     <AppShell
       eyebrow="Access"
       title="Sign in"
-      subtitle="Sign in with the Supabase test user to open the protected dashboard and ledger records."
+      subtitle="Sign in with email and password to open Aego and the private dashboard. Google login is planned for a later production-auth stage."
       maxWidthClassName="max-w-2xl"
-      actions={
-        <>
-          <NavPill href="/">Home</NavPill>
-          <NavPill href="/chat">Chat</NavPill>
-        </>
-      }
     >
       <Panel>
         <form className="space-y-5" onSubmit={handleLogin}>
@@ -79,7 +86,7 @@ export default function LoginPage() {
           {message ? <p className="rounded-2xl border border-red-400/30 bg-red-500/10 p-4 text-sm text-red-200">{message}</p> : null}
 
           <button className={`${primaryButtonClassName} w-full`} type="submit" disabled={isLoading}>
-            {isLoading ? "Signing in..." : "Sign in"}
+            {isLoading ? "Signing in..." : "Sign in and open Aego"}
           </button>
         </form>
       </Panel>
