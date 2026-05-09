@@ -170,7 +170,7 @@ Status legend:
 - [ ] Save AI messages.
 - [ ] Save structured actions.
 - [ ] Add AI-confirmed money-bucket creation flow.
-- [ ] Verify parser locally with account-management prompts.
+- [x] Verify parser locally with account-management prompts.
 
 ---
 
@@ -188,8 +188,8 @@ Status legend:
 
 - [ ] Test login.
 - [ ] Test account update through chat.
-- [ ] Test missing bank clarification.
-- [ ] Test missing money-source clarification.
+- [x] Test missing bank clarification.
+- [x] Test missing money-source clarification.
 - [ ] Test task creation through chat.
 - [ ] Test project update through chat.
 - [x] Test dashboard updates.
