@@ -99,8 +99,8 @@ Status legend:
 
 - [ ] Add sign-up page.
 - [x] Add login page.
-- [ ] Add logout action.
-- [ ] Add protected dashboard route.
+- [~] Add logout action.
+- [~] Add protected dashboard route.
 - [ ] Create user profile after first login.
 
 ---
@@ -150,18 +150,18 @@ Status legend:
 
 ## 9. Authenticated Navigation Shell
 
-- [ ] Keep `/` as the public landing page.
-- [ ] Add logged-out navbar with Login and Try Aego CTA.
-- [ ] Make Try Aego route logged-out users to `/login`.
-- [ ] Make Try Aego route logged-in users to `/chat`.
-- [ ] Protect `/chat`, `/dashboard`, and `/accounts`.
-- [ ] Redirect unauthenticated feature access to `/login`.
-- [ ] Redirect logged-out users to `/` after sign-out.
-- [ ] Add consistent logged-in navbar with Chat, Dashboard, Accounts, and future tools.
-- [ ] Add generated profile/avatar button.
-- [ ] Add profile dropdown with Settings, Account, Usage, and Sign out placeholders.
-- [ ] Display app version consistently across pages.
-- [ ] Defer Google OAuth login and real OAuth profile pictures until later production-auth stage.
+- [x] Keep `/` as the public landing page.
+- [x] Add logged-out navbar with Login and Try Aego CTA.
+- [x] Make Try Aego route logged-out users to `/login`.
+- [x] Make Try Aego route logged-in users to `/chat`.
+- [~] Protect `/chat`, `/dashboard`, and `/accounts`.
+- [~] Redirect unauthenticated feature access to `/login`.
+- [~] Redirect logged-out users to `/` after sign-out.
+- [x] Add consistent logged-in navbar with Chat, Dashboard, Accounts, and future tools.
+- [x] Add generated profile/avatar button.
+- [x] Add profile dropdown with Settings, Account, Usage, and Sign out placeholders.
+- [x] Display app version consistently across pages.
+- [x] Defer Google OAuth login and real OAuth profile pictures until later production-auth stage.
 
 ---
 
