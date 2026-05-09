@@ -40,7 +40,18 @@
 - Add manual transaction form
 - Add money buckets
 
-## Phase 6 — Chat Assistant MVP
+## Phase 6 — Brand Foundation Checkpoint
+
+This is a lightweight UI/brand consistency checkpoint before the AI parser phase, not a full public-launch branding exercise.
+
+- Add MVP brand guidelines.
+- Lock the dark command-system UI direction.
+- Standardize black/gold/parchment visual tokens.
+- Standardize page shell, card, button, and form patterns.
+- Add a temporary AegorynOS/Aego identity direction.
+- Defer final logo suite, app icon, marketing website assets, and public brand kit until after AI parser, visual analysis, and private deployment are stable.
+
+## Phase 7 — Chat Assistant MVP
 
 - Add chat input
 - Add backend parser endpoint
@@ -48,21 +59,21 @@
 - Add clarification handling
 - Save AI message logs
 
-## Phase 7 — Usage Credits
+## Phase 8 — Usage Credits
 
 - Add monthly usage record
 - Add credit check before AI call
 - Add usage display
 - Add blocked-state UI
 
-## Phase 8 — Private Deployment
+## Phase 9 — Private Deployment
 
 - Deploy on Vercel
 - Connect Supabase
 - Seed personal data
 - Test daily tracking
 
-## Phase 9 — Public-Beta Preparation
+## Phase 10 — Public-Beta Preparation
 
 - Payment architecture
 - Razorpay/Stripe planning
@@ -71,7 +82,7 @@
 - Admin dashboard
 - Error logging
 
-## Phase 10 — Visual Analysis
+## Phase 11 — Visual Analysis
 
 - Add `/analysis` page.
 - Add monthly spending charts.
@@ -81,7 +92,7 @@
 - Add bank-wise balance split.
 - Add AI-generated insight summaries based on stored records.
 
-## Phase 11 — Expert Assistant Modules
+## Phase 12 — Expert Assistant Modules
 
 These modules are future monetizable product extensions and are not part of the early MVP.
 
@@ -95,7 +106,7 @@ These modules are future monetizable product extensions and are not part of the 
 
 ### Lawyer Mode — India First
 
-- Add a Lawyer-style assistant for document organization, legal-task tracking, case-note drafting support, contract-summary assistance, deadline tracking, and legal research workflows.
+- Add a Lawyer-style assistant for document organization, legal-task tracking support, case-note drafting support, contract-summary assistance, deadline tracking, and legal research workflows.
 - Start with India-native legal terminology, courts, statutes, compliance categories, and filing/deadline workflows.
 - Keep outputs framed as drafting/research/productivity assistance and not a substitute for professional legal advice unless provided by a licensed professional through a compliant workflow.
 - Require jurisdiction, forum/court/authority, matter type, dates, documents, and user role before generating legal workflows.
