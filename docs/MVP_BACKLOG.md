@@ -79,6 +79,7 @@ Status legend:
 - [x] Verify setup status page detects configured local Supabase public environment values.
 - [x] Run migrations in Supabase.
 - [x] Enable Row Level Security in deployed database.
+- [x] Verify Supabase MVP tables exist in Table Editor.
 - [ ] Test user-specific access policies.
 - [ ] Add local seed script for initial personal data.
 
