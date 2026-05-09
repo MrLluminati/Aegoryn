@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { ChevronDown, Shield, UserRound } from "lucide-react";
+import { ChevronDown, Shield } from "lucide-react";
 import { useEffect, useMemo, useState, type ReactNode } from "react";
 import { createBrowserSupabaseClient } from "../../lib/supabase/client";
 import { APP_VERSION } from "../../lib/version";
@@ -91,6 +91,12 @@ export function AuthNavbar({ variant = "app" }: AuthNavbarProps) {
     { href: "/accounts", label: "Accounts" }
   ];
 
+  const profileLinks = [
+    { href: "/profile", label: "Profile" },
+    { href: "/settings", label: "Settings" },
+    { href: "/usage", label: "Usage" }
+  ];
+
   return (
     <nav className="mb-8 flex flex-col justify-between gap-4 md:flex-row md:items-center">
       <BrandLockup />
@@ -126,9 +132,16 @@ export function AuthNavbar({ variant = "app" }: AuthNavbarProps) {
                     <p className="text-xs uppercase tracking-[0.2em] text-aegoryn-gold">Signed in</p>
                     <p className="mt-1 truncate text-sm text-white/65">{user?.email}</p>
                   </div>
-                  <Link className="mt-2 flex rounded-2xl px-3 py-2 text-sm text-white/65 hover:bg-white/5 hover:text-aegoryn-gold" href="/settings">Settings</Link>
-                  <Link className="flex rounded-2xl px-3 py-2 text-sm text-white/65 hover:bg-white/5 hover:text-aegoryn-gold" href="/account">Account</Link>
-                  <Link className="flex rounded-2xl px-3 py-2 text-sm text-white/65 hover:bg-white/5 hover:text-aegoryn-gold" href="/usage">Usage</Link>
+                  {profileLinks.map((link, index) => (
+                    <Link
+                      key={link.href}
+                      className={`${index === 0 ? "mt-2 " : ""}flex rounded-2xl px-3 py-2 text-sm text-white/65 hover:bg-white/5 hover:text-aegoryn-gold`}
+                      href={link.href}
+                      onClick={() => setIsMenuOpen(false)}
+                    >
+                      {link.label}
+                    </Link>
+                  ))}
                   <button className="mt-2 flex w-full rounded-2xl px-3 py-2 text-left text-sm text-white/65 hover:bg-white/5 hover:text-aegoryn-gold" onClick={handleSignOut} type="button">
                     Sign out
                   </button>
