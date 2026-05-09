@@ -80,6 +80,7 @@ This project follows a human-readable changelog format inspired by Keep a Change
 - Recorded successful dashboard verification with live Supabase account, pocket-money, and recent-transaction records.
 - Recorded successful production build before creating the `v0.1.2-supabase-connect` rollback tag.
 - Started `v0.1.3-account-ledger` account-management phase.
+- Recorded successful local manual transaction verification through `/accounts`.
 
 ### Security
 
