@@ -123,7 +123,8 @@ Status legend:
 - [x] Add balance update logic.
 - [x] Preserve source text for transactions.
 - [x] Verify manual transaction creation locally.
-- [ ] Add transaction deletion/reversal safety rule.
+- [x] Add transaction deletion/reversal safety rule.
+- [ ] Verify transaction reversal locally.
 
 ---
 
