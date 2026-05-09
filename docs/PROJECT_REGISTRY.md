@@ -18,7 +18,7 @@ This document is the central administrative register for AegorynOS. It should tr
 | Project Type | AI-first personal assistant operating system |
 | Repository | MrLluminati/Aegoryn |
 | Repository Visibility | Public |
-| Status | Planning / Documentation |
+| Status | MVP development |
 
 ---
 
@@ -140,8 +140,8 @@ Search sources to use before launch:
 | Service | Purpose | Account Email | Status | Notes |
 |---|---|---|---|---|
 | GitHub | Source code repository | To be added | Active | Repo: MrLluminati/Aegoryn |
+| Supabase | Database/Auth | To be added | Active | Organization: Aegoryn Labs. Project: aegoryn-os. Region: South Asia (Mumbai). Free plan. Public URL and public key stored only in local `.env.local`. Secret/database credentials must not be committed. |
 | Vercel | Hosting | To be added | Pending | Use later for deployment. |
-| Supabase | Database/Auth | To be added | Pending | Use later for backend database. |
 | OpenAI Platform | AI API | To be added | Pending | API key must never be committed. |
 | Razorpay | India payments | To be added | Future | Use in paid beta. |
 | Stripe | Global payments | To be added | Future | Use if global launch. |
@@ -167,6 +167,7 @@ Never commit the following to GitHub:
 
 - OpenAI API keys;
 - Supabase service-role keys;
+- Supabase secret keys;
 - database passwords;
 - Vercel tokens;
 - GitHub tokens;
@@ -187,6 +188,7 @@ Use `.env.local` for local development and platform environment variables for de
 | 2026-05-08 | Chose tagline: Guard your records. Command your life. | Matches records-first and command-system positioning. |
 | 2026-05-08 | Repository created: MrLluminati/Aegoryn | Fresh repo for AegorynOS development. |
 | 2026-05-09 | Confirmed VS Code as primary development environment | Future setup/debug instructions should assume VS Code integrated terminal using PowerShell 7 on Windows. |
+| 2026-05-09 | Created Supabase organization and project | Organization: Aegoryn Labs. Project: aegoryn-os. Region: South Asia (Mumbai). Free plan. |
 
 ---
 
