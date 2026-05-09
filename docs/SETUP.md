@@ -11,7 +11,7 @@ D:\Coding\Repos\Aegoryn
 Primary development environment:
 
 ```text
-Visual Studio Code on Windows, using PowerShell terminal.
+Visual Studio Code on Windows, using the VS Code integrated terminal with PowerShell 7.
 ```
 
 ---
@@ -24,6 +24,7 @@ Install these before app development begins:
 - Node.js LTS
 - npm
 - Visual Studio Code
+- PowerShell 7
 - GitHub account access
 - Supabase account
 - Vercel account
@@ -46,7 +47,7 @@ Use VS Code's integrated terminal:
 Terminal → New Terminal
 ```
 
-Use PowerShell as the default terminal for project commands.
+Use PowerShell 7 as the terminal for project commands.
 
 ---
 
@@ -182,7 +183,7 @@ Local repository path:
 D:\Coding\Repos\Aegoryn
 ```
 
-The assistant should provide a PowerShell script to extract, copy, stage, commit, and push the update.
+The assistant should provide a PowerShell 7-compatible script to extract, copy, stage, commit, and push the update.
 
 ---
 
