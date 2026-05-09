@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="AegorynOS icon">
+  <rect width="128" height="128" rx="30" fill="#090909"/>
+  <path d="M64 18 96 31v29c0 25-13 43-32 52-19-9-32-27-32-52V31l32-13Z" fill="none" stroke="#D4AF37" stroke-width="8" stroke-linejoin="round"/>
+  <path d="M43 90 64 34l21 56" fill="none" stroke="#F6F1E7" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M53 70h22" stroke="#D4AF37" stroke-width="7" stroke-linecap="round"/>
+</svg>
