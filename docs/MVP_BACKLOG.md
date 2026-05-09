@@ -84,7 +84,7 @@ Status legend:
 - [ ] Test user-specific access policies.
 - [x] Seed initial account-management data for test user.
 - [x] Verify seeded account-management data in Supabase.
-- [~] Add explicit authenticated role grants for Data API access.
+- [x] Add explicit authenticated role grants for Data API access.
 
 ---
 
