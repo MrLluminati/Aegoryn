@@ -45,6 +45,7 @@ This project follows a human-readable changelog format inspired by Keep a Change
 - Supabase login page at `/login`.
 - Recent transactions section on the dashboard.
 - Supabase API role grants migration for authenticated Data API access.
+- `v0.1.2-supabase-connect` Git tag for the Supabase connection and live dashboard baseline.
 
 ### Changed
 
@@ -74,6 +75,7 @@ This project follows a human-readable changelog format inspired by Keep a Change
 - Updated `/dashboard` to load account, pocket-money, and recent-transaction records from Supabase after sign-in.
 - Recorded successful execution of the authenticated role grants migration in Supabase.
 - Recorded successful dashboard verification with live Supabase account, pocket-money, and recent-transaction records.
+- Recorded successful production build before creating the `v0.1.2-supabase-connect` rollback tag.
 
 ### Security
 
