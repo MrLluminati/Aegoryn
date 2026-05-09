@@ -107,7 +107,8 @@ Status legend:
 - [x] Add active tasks placeholder.
 - [ ] Add active projects.
 - [ ] Add AI usage card.
-- [~] Connect dashboard to database.
+- [x] Connect dashboard to database.
+- [x] Verify dashboard loads Supabase account, pocket-money, and transaction records.
 
 ---
 
