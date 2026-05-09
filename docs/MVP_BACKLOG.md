@@ -41,7 +41,7 @@ Status legend:
 - [ ] Create release notes for `v0.0.1-planning`.
 - [x] Push baseline tag to GitHub.
 - [x] Create app-scaffold Git tag: `v0.1.0-mvp-start`.
-- [ ] Create Supabase schema Git tag: `v0.1.1-supabase-schema`.
+- [x] Create Supabase schema Git tag: `v0.1.1-supabase-schema`.
 
 ---
 
