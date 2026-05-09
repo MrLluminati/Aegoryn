@@ -62,11 +62,13 @@ This project follows a human-readable changelog format inspired by Keep a Change
 - Recorded successful local verification that `/setup/supabase` renders without Supabase environment values and shows the expected not-configured state.
 - Recorded Visual Studio Code on Windows with PowerShell as the active development environment.
 - Updated setup documentation to prioritize VS Code workflow and current local routes.
+- Recorded Supabase project creation details in the project registry without storing secrets or keys.
 
 ### Security
 
 - Added rule that secrets, API keys, tokens, passwords, OTPs, recovery codes, and private credentials must never be committed to the repository.
 - Added Row Level Security policy migration for all MVP user-data tables.
+- Added Supabase secret keys and database passwords to the explicit do-not-commit list in the project registry.
 
 ---
 
