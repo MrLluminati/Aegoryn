@@ -65,6 +65,7 @@ This project follows a human-readable changelog format inspired by Keep a Change
 - Recorded Supabase project creation details in the project registry without storing secrets or keys.
 - Recorded successful execution of Supabase schema and RLS migrations in the hosted Supabase project.
 - Recorded Supabase Table Editor verification of all MVP tables.
+- Recorded creation of the initial test Auth user for RLS and seed-data testing.
 
 ### Security
 
