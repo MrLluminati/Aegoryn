@@ -82,7 +82,7 @@ Status legend:
 - [x] Verify Supabase MVP tables exist in Table Editor.
 - [x] Create test Auth user.
 - [ ] Test user-specific access policies.
-- [ ] Add local seed script for initial personal data.
+- [x] Seed initial account-management data for test user.
 
 ---
 
