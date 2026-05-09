@@ -126,7 +126,7 @@ Status legend:
 - [x] Preserve source text for transactions.
 - [x] Verify manual transaction creation locally.
 - [x] Add transaction deletion/reversal safety rule.
-- [ ] Verify transaction reversal locally.
+- [x] Verify transaction reversal locally.
 
 ---
 
