@@ -32,6 +32,7 @@ Status legend:
 - [x] Add setup guide.
 - [x] Add security policy.
 - [x] Add MVP backlog.
+- [x] Add MVP brand guidelines.
 
 ---
 
@@ -44,6 +45,7 @@ Status legend:
 - [x] Create Supabase schema Git tag: `v0.1.1-supabase-schema`.
 - [x] Create Supabase connection Git tag: `v0.1.2-supabase-connect`.
 - [ ] Create account-ledger Git tag: `v0.1.3-account-ledger`.
+- [ ] Create brand-foundation Git tag: `v0.1.3-brand-foundation`.
 
 ---
 
@@ -128,7 +130,18 @@ Status legend:
 
 ---
 
-## 8. Tasks and Projects
+## 8. Brand Foundation
+
+- [x] Create lightweight MVP brand guidelines.
+- [ ] Standardize shared page shell.
+- [ ] Standardize card, form, and button styling.
+- [ ] Add temporary AegorynOS identity mark or wordmark.
+- [ ] Add favicon placeholder.
+- [ ] Verify branding consistency across home, login, dashboard, chat, and accounts.
+
+---
+
+## 9. Tasks and Projects
 
 - [ ] Create tasks page.
 - [ ] Create project page.
@@ -139,7 +152,7 @@ Status legend:
 
 ---
 
-## 9. Chat Assistant MVP
+## 10. Chat Assistant MVP
 
 - [x] Create static chat UI shell.
 - [ ] Create backend chat endpoint.
@@ -153,7 +166,7 @@ Status legend:
 
 ---
 
-## 10. Usage Credits
+## 11. Usage Credits
 
 - [ ] Add usage-credit database logic.
 - [ ] Add monthly usage check.
@@ -163,7 +176,7 @@ Status legend:
 
 ---
 
-## 11. Private Alpha Readiness
+## 12. Private Alpha Readiness
 
 - [ ] Test login.
 - [ ] Test account update through chat.
@@ -178,7 +191,7 @@ Status legend:
 
 ---
 
-## 12. Future / Not MVP
+## 13. Future / Not MVP
 
 - [ ] Payment gateway integration.
 - [ ] Mobile app.
