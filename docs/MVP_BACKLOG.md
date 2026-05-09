@@ -90,7 +90,7 @@ Status legend:
 ## 5. Authentication
 
 - [ ] Add sign-up page.
-- [ ] Add login page.
+- [x] Add login page.
 - [ ] Add logout action.
 - [ ] Add protected dashboard route.
 - [ ] Create user profile after first login.
@@ -102,11 +102,11 @@ Status legend:
 - [x] Create dashboard shell.
 - [x] Add static account balance cards.
 - [x] Add static pocket money summary.
-- [ ] Add recent transactions.
+- [x] Add recent transactions section.
 - [x] Add active tasks placeholder.
 - [ ] Add active projects.
 - [ ] Add AI usage card.
-- [ ] Connect dashboard to database.
+- [~] Connect dashboard to database.
 
 ---
 
