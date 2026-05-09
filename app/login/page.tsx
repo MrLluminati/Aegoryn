@@ -16,18 +16,26 @@ export default function LoginPage() {
     setMessage("");
     setIsLoading(true);
 
-    const supabase = createBrowserSupabaseClient();
-    const { error } = await supabase.auth.signInWithPassword({ email, password });
+    try {
+      const supabase = createBrowserSupabaseClient();
+      const { error } = await supabase.auth.signInWithPassword({ email, password });
 
-    setIsLoading(false);
+      if (error) {
+        setMessage(error.message);
+        return;
+      }
 
-    if (error) {
-      setMessage(error.message);
-      return;
+      router.push("/dashboard");
+      router.refresh();
+    } catch (error) {
+      setMessage(
+        error instanceof Error
+          ? error.message
+          : "Login failed. Check Supabase URL, publishable key, network, and dev-server restart."
+      );
+    } finally {
+      setIsLoading(false);
     }
-
-    router.push("/dashboard");
-    router.refresh();
   }
 
   return (
