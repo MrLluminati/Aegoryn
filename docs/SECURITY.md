@@ -87,6 +87,10 @@ The parser API checks the authenticated Supabase user on the server before parsi
 
 Successful parser requests are saved to `ai_messages` only after that server-side user check passes.
 
+Daily chat logs are a date-based view of `ai_messages`. They do not weaken Row Level Security or create shared logs.
+
+Browser voice input is currently speech-to-text only. The browser handles microphone capture, and AegorynOS receives only the text transcript after the user submits it.
+
 Manual ledger writes use database functions so the transaction row and balance updates succeed or fail together.
 
 ---

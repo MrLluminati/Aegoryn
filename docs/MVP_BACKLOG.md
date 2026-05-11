@@ -199,7 +199,11 @@ Status legend:
 - [ ] Add clarification handling.
 - [ ] Add action validation.
 - [x] Save AI messages.
+- [x] Group saved parser history by daily log.
 - [ ] Verify saved parser history reloads after signed-in chat parse.
+- [ ] Verify daily log sidebar with messages across more than one day.
+- [x] Add experimental browser voice input.
+- [ ] Verify browser voice input on Chrome.
 - [ ] Save structured actions.
 - [ ] Add AI-confirmed money-bucket creation flow.
 - [x] Verify parser locally with account-management prompts.
@@ -243,7 +247,7 @@ Status legend:
 - [ ] Gmail integration.
 - [ ] Calendar integration.
 - [ ] WhatsApp bot.
-- [ ] Voice input.
+- [ ] Production-grade audio transcription and mobile voice capture.
 - [ ] PDF export.
 - [ ] Admin dashboard.
 - [ ] Public marketing website.

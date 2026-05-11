@@ -131,8 +131,30 @@ Paid ₹500 for groceries from Kotak from Savings.
 3. Confirm Aego returns a structured parser result.
 4. Refresh the page.
 5. Confirm the recent parser message appears again from saved history.
+6. Confirm the left sidebar shows **Today** with at least one saved entry.
+7. Click **Today** and confirm the same daily conversation remains visible.
 
 If the chat says you must sign in, sign in again. If it still fails, check `.env.local` and restart the dev server.
+
+### Voice input checklist
+
+Voice input depends on the browser. It should work in Chrome-like browsers, but may not work in every browser.
+
+1. Open `http://localhost:3000/chat` while signed in.
+2. Click the microphone button beside the input box.
+3. If the browser asks for microphone permission, allow it for local testing.
+4. Say a short test message, for example:
+
+```text
+Paid one hundred rupees for snacks from Kotak from Pocket Money.
+```
+
+5. Confirm the spoken text appears in the input box.
+6. Review the text.
+7. Click **Send**.
+8. Confirm Aego saves the parser entry in today's daily log.
+
+The app sends only the final text when you click **Send**. Do not test with private secrets, passwords, OTPs, or real credentials.
 
 ### Optional Supabase table check
 

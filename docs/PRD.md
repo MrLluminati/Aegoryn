@@ -65,6 +65,10 @@ Parser endpoints must require an authenticated user before processing private up
 
 Parser interactions should be saved to `ai_messages` so the user can refresh the chat page and still see recent parser history. Saving the parser log is separate from saving confirmed actions into operational tables such as `transactions`, `tasks`, or `projects`.
 
+Saved parser interactions should be presented as daily logs. The default chat should open to the user's current day, while previous days remain available as a personal logbook or diary.
+
+The chat assistant may support browser voice input as a capture shortcut. Voice input should produce editable text first; the user must still review and submit the text before Aego processes it.
+
 ### 4.3 Account Management
 
 Tracks bank accounts, balances, money buckets, income, expenses, transfers, and monthly summaries.

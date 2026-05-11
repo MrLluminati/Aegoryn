@@ -95,7 +95,18 @@ API route saves the user message and parser result to ai_messages
 Chat page shows the parser response
 ```
 
-The chat page also reads recent `ai_messages` rows for the signed-in user and displays them as recent parser history. Row Level Security keeps each user's parser history isolated.
+The chat page also reads recent `ai_messages` rows for the signed-in user and groups them by the user's local calendar day. This creates a daily logbook without adding a separate conversation table yet.
+
+Current daily log behavior:
+
+1. Today opens as the active chat by default.
+2. Older days appear in the chat sidebar.
+3. When the browser's calendar day changes, the active "today" log becomes a fresh day.
+4. Older logs remain readable because the underlying `ai_messages` rows are preserved.
+
+Row Level Security keeps each user's parser history isolated.
+
+The browser voice-input button uses browser speech recognition where supported. Audio is handled by the browser; the app only sends text after the user submits the transcript.
 
 This is not the final action-save workflow. Structured transaction, task, and project writes still need validation and a confirmation step before Aego writes them to the operational tables.
 

@@ -189,7 +189,8 @@ Rules:
 - do not log secrets or credentials;
 - use status values such as `processed`, `clarification_required`, or `failed`;
 - parser logs should be created by the authenticated parser API route, not by anonymous clients;
-- the chat page may read recent rows for the signed-in user so parser history survives refreshes.
+- the chat page may read recent rows for the signed-in user so parser history survives refreshes;
+- daily chat logs are currently grouped from `created_at` in the user's browser timezone, not stored in a separate conversation table.
 
 ---
 
@@ -317,6 +318,7 @@ Do not commit private production data or credentials.
 
 - Test user-specific RLS policies with a second user.
 - Verify saved parser history reloads from `ai_messages` after a signed-in chat parse.
+- Verify daily grouping across calendar days.
 - Test `ai_messages` isolation with a second user.
 - Keep migration documentation current as new tables, functions, or grants are added.
 - Add usage-credit checks before live AI calls.

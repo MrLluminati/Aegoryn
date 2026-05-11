@@ -34,7 +34,7 @@ export async function POST(request: NextRequest) {
         classification: result.classification,
         status: messageStatus
       })
-      .select("id")
+      .select("id,user_id,user_message,ai_response,classification,status,created_at")
       .single();
 
     if (saveError) {
@@ -47,7 +47,7 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    return NextResponse.json({ ok: true, result, messageId: savedMessage?.id ?? null });
+    return NextResponse.json({ ok: true, result, message: savedMessage, messageId: savedMessage?.id ?? null });
   } catch (error) {
     return NextResponse.json(
       {

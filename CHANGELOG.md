@@ -14,6 +14,7 @@ This project follows a human-readable changelog format inspired by Keep a Change
 - Clarified the release-note requirement in versioning and contributor documentation.
 - Updated stale references from `v0.1.4-ai-parser` to `v0.1.5-ai-parser`.
 - Added ownership notice convention for Abhijeet Kumar, alias MrLluminati.
+- Chat parser history is now organized as daily logbook entries instead of one flat recent-message list.
 
 ### Added
 
@@ -22,10 +23,13 @@ This project follows a human-readable changelog format inspired by Keep a Change
 - Code-level ownership constants in `lib/ownership.ts`.
 - Authenticated Aego parser requests are now saved to the `ai_messages` table.
 - The chat page now reloads recent saved parser history for the signed-in user.
+- Daily log sidebar on `/chat` using saved `ai_messages` grouped by the user's local calendar day.
+- Experimental browser voice input on `/chat` for speech-to-text message drafting.
 
 ### Security
 
 - Parser logs are written only after the API route verifies the authenticated Supabase user.
+- Voice input uses the browser's speech-recognition capability; AegorynOS receives only the transcript after the user sends it.
 
 ---
 
