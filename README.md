@@ -45,6 +45,7 @@ This repository includes the project foundation documents and safety rules requi
 - `docs/MVP_BACKLOG.md`
 - `docs/LOCAL_VERIFICATION_GUIDE.md`
 - `docs/VERSIONING_AND_RELEASES.md`
+- `docs/releases/`
 - `docs/PROJECT_RULEBOOK.md`
 - `docs/AI_AGENT_GUIDELINES.md`
 
@@ -63,6 +64,7 @@ See the `docs/` folder:
 - `MVP_BACKLOG.md`
 - `LOCAL_VERIFICATION_GUIDE.md`
 - `VERSIONING_AND_RELEASES.md`
+- `releases/`
 - `PROJECT_RULEBOOK.md`
 - `AI_AGENT_GUIDELINES.md`
 

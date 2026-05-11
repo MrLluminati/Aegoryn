@@ -39,14 +39,20 @@ Status legend:
 ## 2. Versioning
 
 - [x] Create baseline Git tag: `v0.0.1-planning`.
-- [ ] Create release notes for `v0.0.1-planning`.
+- [x] Create release notes for `v0.0.1-planning`.
 - [x] Push baseline tag to GitHub.
 - [x] Create app-scaffold Git tag: `v0.1.0-mvp-start`.
+- [x] Create release notes for `v0.1.0-mvp-start`.
 - [x] Create Supabase schema Git tag: `v0.1.1-supabase-schema`.
+- [x] Create release notes for `v0.1.1-supabase-schema`.
 - [x] Create Supabase connection Git tag: `v0.1.2-supabase-connect`.
+- [x] Create release notes for `v0.1.2-supabase-connect`.
 - [x] Create account-ledger Git tag: `v0.1.3-account-ledger`.
+- [x] Create release notes for `v0.1.3-account-ledger`.
 - [x] Create brand-foundation Git tag: `v0.1.3-brand-foundation`.
+- [x] Create release notes for `v0.1.3-brand-foundation`.
 - [x] Create auth-nav-shell Git tag: `v0.1.4-auth-nav-shell`.
+- [x] Create release notes for `v0.1.4-auth-nav-shell`.
 - [ ] Create AI-parser Git tag: `v0.1.5-ai-parser`.
 
 ---

@@ -13,7 +13,8 @@ The authoritative versioning system for AegorynOS is:
 1. Git commits;
 2. Git tags;
 3. changelog entries;
-4. release notes, when applicable.
+4. release notes in `docs/releases/`;
+5. GitHub Releases when tags are pushed to GitHub.
 
 A plain version file may be used later for display inside the app, but it is not the rollback authority.
 
@@ -140,6 +141,12 @@ Example:
 
 If a version is tagged but not documented in `CHANGELOG.md`, the release is incomplete.
 
+Every pushed tag must also have a matching release-note file in:
+
+```text
+docs/releases/
+```
+
 ---
 
 ## 7. Git Tag Commands
@@ -202,7 +209,7 @@ Force-push rollback should be used carefully because it rewrites branch history.
 
 ## 9. Release Notes
 
-For important tagged versions, create release notes summarizing:
+For every tagged version, create release notes summarizing:
 
 1. version tag;
 2. date;
@@ -213,7 +220,7 @@ For important tagged versions, create release notes summarizing:
 7. known limitations;
 8. rollback notes.
 
-Release notes may be stored in:
+Release notes must be stored in:
 
 ```text
 docs/releases/
@@ -225,6 +232,23 @@ Example:
 docs/releases/v0.0.1-planning.md
 ```
 
+When the tag is pushed to GitHub, create or update the matching GitHub Release with the same release-note body.
+
+### Release Checklist
+
+Before a release/tag is considered complete:
+
+1. `CHANGELOG.md` has a section for the tag.
+2. `docs/releases/<tag>.md` exists.
+3. `docs/releases/README.md` lists the tag.
+4. App/package version display is updated when the checkpoint is user-visible.
+5. `npm run typecheck` passes.
+6. `npm run build` passes.
+7. The release docs are committed.
+8. The commit is pushed.
+9. The annotated tag is created and pushed.
+10. The matching GitHub Release is created or updated.
+
 ---
 
 ## 10. Suggested Early Tags
@@ -234,15 +258,17 @@ Recommended early version checkpoints:
 | Version | Meaning |
 |---|---|
 | v0.0.1-planning | Documentation and governance baseline |
-| v0.0.2-repo-foundation | Setup docs, security docs, backlog, env template |
 | v0.1.0-mvp-start | Next.js/Tailwind/Supabase scaffold begins |
-| v0.1.1-auth | Authentication implemented |
-| v0.1.2-dashboard | Dashboard shell implemented |
+| v0.1.1-supabase-schema | Supabase schema, RLS, and seed-template baseline |
+| v0.1.2-supabase-connect | Supabase connection, login page, and live dashboard baseline |
 | v0.1.3-account-ledger | Account and transaction module implemented |
+| v0.1.3-brand-foundation | MVP brand shell and UI consistency baseline |
 | v0.1.4-auth-nav-shell | Authenticated navigation, protected routes, sign-up, and ledger hardening |
 | v0.1.5-ai-parser | AI parser persistence and structured action workflow |
 | v0.1.6-usage-credits | AI usage-credit gate implemented |
 | v0.2.0-private-alpha | Owner-only private usable alpha |
+
+Historical note: `v0.1.3-account-ledger` and `v0.1.3-brand-foundation` both use patch version `0.1.3` with different stage labels. Keep both tags because they already exist, but use a unique patch number for future checkpoints.
 
 ---
 
@@ -253,9 +279,11 @@ Any AI agent working on this repository must:
 1. check the current changelog before suggesting a version;
 2. suggest a new tag only for meaningful checkpoints;
 3. update `CHANGELOG.md` before a tag is created;
-4. create release notes for important versions;
-5. never create rollback or force-push commands without warning the owner;
-6. provide manual PowerShell commands if it cannot create tags directly.
+4. create or update `docs/releases/<tag>.md`;
+5. update `docs/releases/README.md`;
+6. create or update the matching GitHub Release after pushing the tag;
+7. never create rollback or force-push commands without warning the owner;
+8. provide manual PowerShell commands if it cannot create tags directly.
 
 ---
 

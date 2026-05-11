@@ -200,4 +200,4 @@ Recommended tag after implementation and build verification:
 v0.1.3-brand-foundation
 ```
 
-This tag should not replace the account-ledger rollback tag. It should act as a UI/brand consistency checkpoint before `v0.1.4-ai-parser`.
+This tag should not replace the account-ledger rollback tag. It should act as a UI/brand consistency checkpoint before `v0.1.5-ai-parser`.

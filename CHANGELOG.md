@@ -2,13 +2,17 @@
 
 All notable changes to AegorynOS should be documented in this file.
 
-This project follows a human-readable changelog format inspired by Keep a Changelog. Dates should use `YYYY-MM-DD` format.
+This project follows a human-readable changelog format inspired by Keep a Changelog. Dates use `YYYY-MM-DD` format.
 
 ---
 
 ## [Unreleased]
 
-Future changes after the `v0.1.4-auth-nav-shell` checkpoint should be recorded here.
+### Changed
+
+- Backfilled release notes for all existing Git tags.
+- Clarified the release-note requirement in versioning and contributor documentation.
+- Updated stale references from `v0.1.4-ai-parser` to `v0.1.5-ai-parser`.
 
 ---
 
@@ -52,123 +56,174 @@ Future changes after the `v0.1.4-auth-nav-shell` checkpoint should be recorded h
 
 ---
 
+## [v0.1.3-brand-foundation] - 2026-05-09
+
 ### Added
 
-- Initial project documentation.
-- Product Requirements Document for AegorynOS v0.1.
-- Architecture document.
-- Database schema draft.
-- Development roadmap.
-- Project registry.
-- Contacts and domains register.
-- Contributor guidelines.
-- AI agent guidelines.
-- Project rulebook/bylaws.
-- Manual update fallback protocol for cases where direct repository updates fail.
-- Versioning and release policy for Git tags, release notes, and rollback checkpoints.
-- `.gitignore` for Node.js, Next.js, environment files, editor files, and secret/key file patterns.
-- `.env.example` with safe placeholder environment variable names for future local setup.
-- Setup guide for local development, Supabase preparation, AI provider flow, manual fallback, and version tags.
-- Security policy covering secret handling, Supabase requirements, AI validation, frontend restrictions, and private-alpha checklist.
-- MVP backlog with actionable checklists for repository foundation, app scaffold, Supabase, authentication, dashboard, account management, chat assistant, and usage credits.
-- Next.js app scaffold with package manifest, app router layout, global styles, Tailwind config, PostCSS config, and TypeScript config.
-- Initial landing page shell for AegorynOS.
-- Initial static dashboard shell with account cards, pocket money summary, and task placeholders.
-- Initial static chat assistant shell with clarification-message example.
-- Supabase browser client helper.
-- `v0.1.0-mvp-start` Git tag for the working app scaffold baseline.
-- Supabase initial schema migration for core MVP tables and indexes.
-- Supabase Row Level Security policy migration for user-owned records.
-- Supabase seed-data folder with safe README and generic placeholder seed template.
-- Supabase setup guide for migrations, RLS checks, and environment handling.
-- `v0.1.1-supabase-schema` Git tag for the Supabase schema and RLS baseline.
-- Supabase environment helper for safe public configuration checks.
-- Supabase setup status page at `/setup/supabase`.
-- Initial TypeScript row types for accounts, money buckets, and transactions.
-- Account, money bucket, and recent transaction fetch helpers.
-- Supabase login page at `/login`.
-- Recent transactions section on the dashboard.
-- Supabase API role grants migration for authenticated Data API access.
-- `v0.1.2-supabase-connect` Git tag for the Supabase connection and live dashboard baseline.
-- Supabase-backed account ledger page at `/accounts`.
-- Manual transaction entry form with account, bucket, category, description, and source-text fields.
-- Account balance and money-bucket balance update logic for manual income and expense entries.
-- Ledger reversal flow that creates audit-preserving correction entries instead of silently deleting transactions.
-- MVP brand guidelines document for the lightweight AegorynOS brand foundation.
-- Supabase email/password sign-up page for private alpha account creation.
-- Login-screen link to create a new account.
-- Supabase SSR auth helper for cookie-backed browser sessions, Next.js proxy checks, and server route auth.
-- Next.js proxy redirects for protected app routes and signed-in auth routes.
-- Server-side authentication check for the Aego parser API.
-- User-profile bootstrap helper and Supabase trigger migration.
-- Atomic Supabase ledger RPC functions for transaction creation and reversal.
-- Local verification guide with manual Supabase migration and auth/ledger smoke-test steps.
+- Shared AegorynOS brand shell components.
+- Dark command-system UI treatment across home, login, chat, dashboard, and accounts pages.
+- Temporary favicon placeholder.
+- Savings bucket seed migration and dashboard Savings metric support.
 
 ### Changed
 
-- Repository initialized as the central source of truth for the AegorynOS project.
-- Strengthened the project rulebook to state that documentation updates are mandatory and form part of the definition of done for every meaningful project change.
-- Clarified that Git tags and changelog entries, not a plain version file, are the authoritative rollback/versioning mechanism.
-- Updated README to list repository foundation files, security note, and complete documentation index.
-- Updated MVP backlog to reflect app scaffold progress.
-- Pinned Tailwind CSS to v3.4.x so the current PostCSS configuration and `@tailwind base/components/utilities` stylesheet work without requiring the Tailwind v4 PostCSS plugin package.
-- Temporarily removed ESLint dependencies and lint script from the MVP scaffold to avoid local npm dependency-resolution blocking during the first run.
-- Recorded successful local scaffold run for landing page, dashboard, and chat shell.
-- Recorded successful production build for the initial Next.js scaffold.
-- Marked the app-scaffold rollback checkpoint as complete.
-- Updated database schema documentation to reference Supabase migration files, RLS policies, and seed templates.
-- Marked the Supabase schema rollback checkpoint as complete.
-- Updated Supabase setup documentation for local connection testing and helper files.
-- Updated MVP backlog to reflect Supabase connection helper progress.
-- Recorded successful local verification that `/setup/supabase` renders without Supabase environment values and shows the expected not-configured state.
-- Recorded Visual Studio Code on Windows with PowerShell as the active development environment.
-- Updated setup documentation to prioritize VS Code workflow and current local routes.
-- Recorded Supabase project creation details in the project registry without storing secrets or keys.
-- Recorded successful execution of Supabase schema and RLS migrations in the hosted Supabase project.
-- Recorded Supabase Table Editor verification of all MVP tables.
-- Recorded creation of the initial test Auth user for RLS and seed-data testing.
-- Recorded successful seeding of initial account-management records for the test user.
-- Recorded verification of seeded account-management records in Supabase.
-- Updated `/dashboard` to load account, pocket-money, and recent-transaction records from Supabase after sign-in.
-- Recorded successful execution of the authenticated role grants migration in Supabase.
-- Recorded successful dashboard verification with live Supabase account, pocket-money, and recent-transaction records.
-- Recorded successful production build before creating the `v0.1.2-supabase-connect` rollback tag.
-- Started `v0.1.3-account-ledger` account-management phase.
-- Recorded successful local manual transaction verification through `/accounts`.
-- Recorded successful verification of atomic account-ledger transaction creation and reversal after the Supabase RPC migration.
-- Recorded successful execution of the Supabase user-profile bootstrap migration.
-- Recorded successful verification that signed-in users can still access the landing page with authenticated actions.
-- Updated account ledger UI to explain the no-silent-delete safety rule.
-- Added a brand-foundation checkpoint to the roadmap before the AI parser phase.
-- Updated MVP backlog to track brand-foundation tasks and future rollback tag.
-- Updated account-ledger writes to use database functions instead of separate client-side insert/update calls.
-- Updated Supabase docs to act as a manual migration guide for non-coder verification.
+- Standardized app shell, cards, forms, buttons, and version badge presentation.
+- Updated brand foundation roadmap/backlog tracking.
+- Clarified manual fallback ZIP and PowerShell workflow guidance.
 
-### Fixed
+### Verified
 
-- Suppressed root hydration noise caused by browser extensions adding attributes before React loads.
-- Made the public landing page auth-aware so signed-in users can still view it without seeing logged-out calls to action.
-
-### Security
-
-- Added rule that secrets, API keys, tokens, passwords, OTPs, recovery codes, and private credentials must never be committed to the repository.
-- Added Row Level Security policy migration for all MVP user-data tables.
-- Added Supabase secret keys and database passwords to the explicit do-not-commit list in the project registry.
-- Confirmed RLS policy migration ran successfully in Supabase.
-- Granted authenticated Data API access while keeping anonymous users blocked from private MVP tables.
-- Preserved financial audit history by using reversal transactions instead of destructive deletion.
-- Added proxy-backed route protection for private app pages.
-- Added authenticated-server check before parser API processing.
+- Brand consistency was checked across the MVP app screens available at the time.
+- Savings bucket correction was verified.
 
 ---
 
-## [0.1.0-planning] - 2026-05-08
+## [v0.1.3-account-ledger] - 2026-05-09
 
 ### Added
 
-- Finalized working brand direction: Aegoryn.
-- Finalized assistant name: Aego.
-- Finalized app/system name: AegorynOS.
-- Finalized tagline: "Guard your records. Command your life."
-- Created GitHub repository: `MrLluminati/Aegoryn`.
-- Added planning documentation for the initial MVP.
+- Supabase-backed account ledger page at `/accounts`.
+- Manual transaction form for income and expense entries.
+- Account and money-bucket balance update logic for manual ledger entries.
+- Audit-preserving transaction reversal flow.
+- Multiple-reversal blocking rule.
+- Supabase GitHub integration timing and production-readiness workflow rules.
+- Future expert assistant roadmap notes.
+
+### Changed
+
+- Dashboard Savings calculation now uses the Savings bucket when available.
+- PRD and roadmap were updated for chat-first UX, visual analysis, and future expert modules.
+
+### Security
+
+- Ledger corrections preserve financial audit history instead of silently deleting rows.
+
+### Verified
+
+- Manual transaction creation was verified locally.
+- Transaction reversal safety was verified locally.
+
+---
+
+## [v0.1.2-supabase-connect] - 2026-05-09
+
+### Added
+
+- Supabase public environment helpers.
+- Local Supabase setup status page at `/setup/supabase`.
+- Initial TypeScript row types for account-related data.
+- Account, money-bucket, and recent-transaction fetch helpers.
+- Supabase login page at `/login`.
+- Supabase-backed dashboard data loading.
+- API role grants migration for authenticated Data API access.
+
+### Changed
+
+- Supabase environment handling now supports publishable keys with a legacy anon-key fallback.
+- Setup documentation now prioritizes the VS Code and PowerShell 7 workflow.
+- Project registry records the active Supabase project details without storing secrets.
+
+### Security
+
+- Confirmed RLS migration ran successfully in Supabase.
+- Confirmed authenticated role grants were applied while anonymous users remained blocked from private MVP tables.
+
+### Verified
+
+- Supabase setup page rendered locally.
+- Hosted Supabase tables were verified in Table Editor.
+- Test Auth user was created.
+- Initial account-management seed data was inserted and verified.
+- Dashboard loaded live Supabase account, pocket-money, and transaction records.
+- Production build passed before tagging.
+
+---
+
+## [v0.1.1-supabase-schema] - 2026-05-09
+
+### Added
+
+- Initial Supabase schema migration for core MVP tables and indexes.
+- Row Level Security migration for user-owned records.
+- Supabase seed-data README.
+- Generic local seed template.
+- Supabase setup guide.
+
+### Changed
+
+- Database schema documentation now references migration files, RLS policies, and seed templates.
+- MVP backlog now tracks Supabase schema files.
+
+### Security
+
+- Added RLS policies for users_profile, accounts, money_buckets, transactions, projects, tasks, ai_messages, and ai_usage.
+
+---
+
+## [v0.1.0-mvp-start] - 2026-05-09
+
+### Added
+
+- Next.js app scaffold with package manifest.
+- Next.js, TypeScript, Tailwind CSS, and PostCSS configuration.
+- Root app layout and global styles.
+- Initial landing page shell.
+- Initial dashboard shell.
+- Initial static chat assistant shell.
+- Supabase browser client helper.
+- Committed `package-lock.json` for reproducible installs.
+
+### Changed
+
+- Pinned Tailwind CSS to v3.4.x for the current PostCSS setup.
+- Simplified scaffold dependencies to keep the first local install unblocked.
+- Updated MVP backlog and setup documentation for the app scaffold.
+
+### Verified
+
+- Local scaffold run was recorded.
+- Production build passed before tagging.
+
+### Known Limitations
+
+- App screens were static shells.
+- Authentication, database reads/writes, and AI parsing were not active yet.
+
+---
+
+## [v0.0.1-planning] - 2026-05-08
+
+### Added
+
+- Initial AegorynOS repository foundation.
+- Product Requirements Document.
+- Architecture document.
+- Database schema draft.
+- Roadmap.
+- Project registry.
+- Contacts and domains register.
+- Changelog.
+- Contributing guidelines.
+- AI agent guidelines.
+- Project rulebook/bylaws.
+- Manual update fallback protocol.
+- Versioning and release policy.
+- `.gitignore`.
+- `.env.example`.
+- Setup guide.
+- Security policy.
+- MVP backlog.
+
+### Changed
+
+- Finalized working product identity: Aegoryn, AegorynOS, Aego, and “Guard your records. Command your life.”
+
+### Security
+
+- Established the rule that real credentials, API keys, tokens, OTPs, recovery codes, and private financial credentials must never be committed.
+
+### Known Limitations
+
+- No app code was present yet.
+- Supabase, AI provider, and deployment setup were still future work.

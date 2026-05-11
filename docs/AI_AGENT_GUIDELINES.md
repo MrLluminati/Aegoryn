@@ -18,9 +18,10 @@ Before editing code or documentation, read:
 6. `docs/PROJECT_REGISTRY.md`
 7. `docs/CONTACTS_AND_DOMAINS.md`
 8. `docs/PROJECT_RULEBOOK.md`
-9. `CONTRIBUTING.md`
-10. `CHANGELOG.md`
-11. `docs/LOCAL_VERIFICATION_GUIDE.md`
+9. `docs/VERSIONING_AND_RELEASES.md`
+10. `CONTRIBUTING.md`
+11. `CHANGELOG.md`
+12. `docs/LOCAL_VERIFICATION_GUIDE.md`
 
 Do not make assumptions that contradict these files.
 
@@ -108,6 +109,7 @@ Examples:
 - Change project rule → update `docs/PROJECT_RULEBOOK.md`.
 - Any notable change → update `CHANGELOG.md`.
 - Any manual owner action → update `docs/LOCAL_VERIFICATION_GUIDE.md`.
+- Any tag/release work → update `docs/releases/<tag>.md`, `docs/releases/README.md`, and the matching GitHub Release.
 
 If unsure whether documentation needs updating, update it or clearly document why no update was required.
 

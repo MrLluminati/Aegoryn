@@ -39,6 +39,8 @@ Primary documents:
 | `docs/CONTACTS_AND_DOMAINS.md` | Contacts, domains, handles, service accounts |
 | `docs/AI_AGENT_GUIDELINES.md` | Rules for AI agents |
 | `docs/LOCAL_VERIFICATION_GUIDE.md` | Non-coder local testing and manual operation steps |
+| `docs/VERSIONING_AND_RELEASES.md` | Versioning, release notes, tagging, and rollback policy |
+| `docs/releases/` | Human-readable release notes for every pushed Git tag |
 | `CONTRIBUTING.md` | Developer contribution rules |
 | `CHANGELOG.md` | History of notable changes |
 
@@ -200,7 +202,7 @@ Current safe workflow:
 
 Supabase GitHub Integration may be considered only after:
 
-- `v0.1.4-ai-parser` is complete;
+- `v0.1.5-ai-parser` is complete;
 - `v0.1.5-visual-analysis` is complete or at least stable;
 - private deployment on Vercel is active;
 - database migration workflow is stable;
