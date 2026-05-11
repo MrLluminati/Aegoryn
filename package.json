@@ -1,6 +1,6 @@
 {
   "name": "aegoryn-os",
-  "version": "0.1.0-mvp-start",
+  "version": "0.1.4-auth-nav-shell",
   "private": true,
   "description": "AegorynOS — AI-first personal assistant operating system.",
   "scripts": {

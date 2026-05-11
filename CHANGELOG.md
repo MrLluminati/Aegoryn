@@ -8,6 +8,50 @@ This project follows a human-readable changelog format inspired by Keep a Change
 
 ## [Unreleased]
 
+Future changes after the `v0.1.4-auth-nav-shell` checkpoint should be recorded here.
+
+---
+
+## [v0.1.4-auth-nav-shell] - 2026-05-11
+
+### Added
+
+- Supabase email/password sign-up page for private alpha account creation.
+- Cookie-backed Supabase auth using `@supabase/ssr`.
+- Next.js proxy route protection for private app routes.
+- Server-side authentication check for the Aego parser API.
+- User-profile bootstrap helper and Supabase trigger migration.
+- Atomic Supabase ledger RPC functions for transaction creation and reversal.
+- Local verification guide with manual Supabase migration and auth/ledger smoke-test steps.
+
+### Changed
+
+- Account-ledger writes now use database functions instead of separate client-side insert/update calls.
+- Signed-in landing-page actions now open authenticated app areas while keeping the landing page accessible.
+- Supabase setup documentation now includes step-by-step migration guidance for non-coder verification.
+
+### Fixed
+
+- Suppressed root hydration noise caused by browser extensions adding attributes before React loads.
+- Fixed mixed landing-page state where a signed-in navbar could appear with logged-out landing actions.
+
+### Security
+
+- Protected private app pages with proxy-backed route checks.
+- Rejected signed-out parser API requests before processing private text.
+- Preserved ledger balance consistency through atomic database functions.
+
+### Verified
+
+- `npm run typecheck`
+- `npm run build`
+- Supabase migrations `0005_user_profile_bootstrap.sql` and `0006_atomic_ledger_functions.sql` applied.
+- Email sign-up and verification flow tested.
+- Transaction creation and reversal tested after atomic ledger migration.
+- Signed-in landing page tested.
+
+---
+
 ### Added
 
 - Initial project documentation.

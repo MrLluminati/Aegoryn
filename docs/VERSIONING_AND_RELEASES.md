@@ -239,8 +239,9 @@ Recommended early version checkpoints:
 | v0.1.1-auth | Authentication implemented |
 | v0.1.2-dashboard | Dashboard shell implemented |
 | v0.1.3-account-ledger | Account and transaction module implemented |
-| v0.1.4-ai-parser | AI parser endpoint implemented |
-| v0.1.5-usage-credits | AI usage-credit gate implemented |
+| v0.1.4-auth-nav-shell | Authenticated navigation, protected routes, sign-up, and ledger hardening |
+| v0.1.5-ai-parser | AI parser persistence and structured action workflow |
+| v0.1.6-usage-credits | AI usage-credit gate implemented |
 | v0.2.0-private-alpha | Owner-only private usable alpha |
 
 ---
@@ -260,10 +261,10 @@ Any AI agent working on this repository must:
 
 ## 12. Current Version Target
 
-The current intended baseline tag is:
+The current stable checkpoint tag is:
 
 ```text
-v0.0.1-planning
+v0.1.4-auth-nav-shell
 ```
 
-This should represent the project planning and documentation baseline before actual app code begins.
+This represents the authenticated navigation shell, protected route hardening, sign-up flow, parser API auth guard, user-profile bootstrap migration, and atomic ledger RPC checkpoint.

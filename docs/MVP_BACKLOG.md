@@ -46,8 +46,8 @@ Status legend:
 - [x] Create Supabase connection Git tag: `v0.1.2-supabase-connect`.
 - [x] Create account-ledger Git tag: `v0.1.3-account-ledger`.
 - [x] Create brand-foundation Git tag: `v0.1.3-brand-foundation`.
-- [ ] Create auth-nav-shell Git tag: `v0.1.4-auth-nav-shell`.
-- [ ] Create AI-parser Git tag: `v0.1.4-ai-parser`.
+- [x] Create auth-nav-shell Git tag: `v0.1.4-auth-nav-shell`.
+- [ ] Create AI-parser Git tag: `v0.1.5-ai-parser`.
 
 ---
 
