@@ -99,6 +99,21 @@ Use:
 
 ---
 
+## 5A. Ownership Rules
+
+The project is owned by Abhijeet Kumar, alias MrLluminati.
+
+Do not remove or weaken:
+
+- `NOTICE.md`;
+- `.github/CODEOWNERS`;
+- package author/license metadata;
+- ownership records in `docs/PROJECT_REGISTRY.md`.
+
+This repository is not open-source licensed unless the owner explicitly adds a license file later.
+
+---
+
 ## 6. Code Quality Rules
 
 When code is added later:

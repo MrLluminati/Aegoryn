@@ -240,6 +240,15 @@ Before public beta, paid users, or materially important personal records, review
    - MCA name availability, if incorporating in India.
 4. Backup names must remain recorded in the project registry.
 
+## Article 9A — Source Ownership Notice
+
+1. Source code, documentation, release notes, migrations, and project assets are owned by Abhijeet Kumar, alias MrLluminati, unless a future written agreement or explicit license says otherwise.
+2. The repository must keep `NOTICE.md`.
+3. Package metadata should continue to list `Abhijeet Kumar (MrLluminati)` as author unless the owner changes it.
+4. GitHub CODEOWNERS should continue to identify `@MrLluminati` as repository owner.
+5. New files must not remove or contradict the ownership notice.
+6. Do not add an open-source license without explicit owner approval.
+
 ---
 
 ## Article 10 — Change Management

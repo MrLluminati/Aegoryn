@@ -3,6 +3,8 @@
   "version": "0.1.4-auth-nav-shell",
   "private": true,
   "description": "AegorynOS — AI-first personal assistant operating system.",
+  "author": "Abhijeet Kumar (MrLluminati)",
+  "license": "UNLICENSED",
   "scripts": {
     "dev": "next dev",
     "build": "next build",

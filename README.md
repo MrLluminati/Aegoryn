@@ -72,6 +72,12 @@ See the `docs/` folder:
 
 Do not commit real credentials, API keys, tokens, OTPs, recovery codes, or private financial information. Use `.env.local` for local development and deployment environment variables for production.
 
+## Ownership Notice
+
+Copyright (c) 2026 Abhijeet Kumar, alias MrLluminati. All rights reserved.
+
+This repository is public for project visibility and development continuity. It is not open-source licensed unless a future explicit license file says otherwise. See `NOTICE.md`.
+
 ## Current Status
 
 MVP development is in progress. The repository now includes the Next.js app scaffold, Supabase-backed authentication and account-ledger surfaces, protected app navigation, the initial deterministic Aego parser endpoint, and placeholder profile/settings/usage pages.

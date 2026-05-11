@@ -19,6 +19,8 @@ This document is the central administrative register for AegorynOS. It should tr
 | Repository | MrLluminati/Aegoryn |
 | Repository Visibility | Public |
 | Status | MVP development |
+| Copyright Owner | Abhijeet Kumar, alias MrLluminati |
+| License Position | Unlicensed / all rights reserved unless changed by explicit owner decision |
 
 ---
 
@@ -110,6 +112,7 @@ Current position:
 - Aegoryn passed the preliminary public-market conflict check better than several earlier candidates.
 - It is not formally cleared.
 - Formal trademark clearance is required before public launch, investor pitch, major branding spend, or app-store publication.
+- Source code, project documentation, and private MVP implementation are marked as owned by Abhijeet Kumar, alias MrLluminati, through `NOTICE.md`, package metadata, and GitHub CODEOWNERS.
 
 Recommended formal search classes:
 
@@ -189,6 +192,7 @@ Use `.env.local` for local development and platform environment variables for de
 | 2026-05-08 | Repository created: MrLluminati/Aegoryn | Fresh repo for AegorynOS development. |
 | 2026-05-09 | Confirmed VS Code as primary development environment | Future setup/debug instructions should assume VS Code integrated terminal using PowerShell 7 on Windows. |
 | 2026-05-09 | Created Supabase organization and project | Organization: Aegoryn Labs. Project: aegoryn-os. Region: South Asia (Mumbai). Free plan. |
+| 2026-05-11 | Added ownership notice convention | Repository ownership is recorded as Abhijeet Kumar, alias MrLluminati, with no reuse license granted unless explicitly added later. |
 
 ---
 

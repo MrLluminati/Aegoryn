@@ -70,6 +70,7 @@ AI agents must not:
 - place secret values in source code;
 - expose backend-only credentials to frontend code;
 - remove security warnings;
+- remove or weaken `NOTICE.md`, CODEOWNERS, package author metadata, or ownership records;
 - rename the product casually;
 - delete project registry documents;
 - ignore changelog updates;
@@ -203,3 +204,19 @@ Version 0.1 is focused on:
 - usage credits.
 
 Avoid adding advanced features before the MVP works.
+
+---
+
+## 13. Ownership Notice Discipline
+
+The project owner is Abhijeet Kumar, alias MrLluminati.
+
+AI agents must preserve:
+
+- `NOTICE.md`;
+- `.github/CODEOWNERS`;
+- package author/license metadata;
+- `lib/ownership.ts`;
+- ownership entries in `docs/PROJECT_REGISTRY.md`.
+
+If new ownership-sensitive files are added, update `NOTICE.md` or the registry when needed. Do not add an open-source license or third-party ownership claim without explicit owner approval.

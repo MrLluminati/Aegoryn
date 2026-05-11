@@ -13,6 +13,13 @@ This project follows a human-readable changelog format inspired by Keep a Change
 - Backfilled release notes for all existing Git tags.
 - Clarified the release-note requirement in versioning and contributor documentation.
 - Updated stale references from `v0.1.4-ai-parser` to `v0.1.5-ai-parser`.
+- Added ownership notice convention for Abhijeet Kumar, alias MrLluminati.
+
+### Added
+
+- `NOTICE.md` with ownership and no-license notice.
+- `.github/CODEOWNERS` assigning repository ownership to `@MrLluminati`.
+- Code-level ownership constants in `lib/ownership.ts`.
 
 ---
 
