@@ -38,6 +38,7 @@ Primary documents:
 | `docs/PROJECT_REGISTRY.md` | Administrative project registry |
 | `docs/CONTACTS_AND_DOMAINS.md` | Contacts, domains, handles, service accounts |
 | `docs/AI_AGENT_GUIDELINES.md` | Rules for AI agents |
+| `docs/LOCAL_VERIFICATION_GUIDE.md` | Non-coder local testing and manual operation steps |
 | `CONTRIBUTING.md` | Developer contribution rules |
 | `CHANGELOG.md` | History of notable changes |
 
@@ -108,7 +109,8 @@ Forbidden repository content:
 6. Any database change must be reflected in the database schema document.
 7. Any contact/domain/service account change must be reflected in the project registry and contacts/domains document.
 8. Any notable change must be recorded in the changelog.
-9. If a future developer or AI agent is unsure whether documentation needs updating, they must update it or explicitly record why no update was required.
+9. Any change requiring manual owner action must include clear, step-by-step instructions in `docs/LOCAL_VERIFICATION_GUIDE.md` or the relevant setup guide.
+10. If a future developer or AI agent is unsure whether documentation needs updating, they must update it or explicitly record why no update was required.
 
 ---
 

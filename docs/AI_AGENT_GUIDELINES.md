@@ -20,6 +20,7 @@ Before editing code or documentation, read:
 8. `docs/PROJECT_RULEBOOK.md`
 9. `CONTRIBUTING.md`
 10. `CHANGELOG.md`
+11. `docs/LOCAL_VERIFICATION_GUIDE.md`
 
 Do not make assumptions that contradict these files.
 
@@ -106,6 +107,7 @@ Examples:
 - Change architecture → update `docs/ARCHITECTURE.md`.
 - Change project rule → update `docs/PROJECT_RULEBOOK.md`.
 - Any notable change → update `CHANGELOG.md`.
+- Any manual owner action → update `docs/LOCAL_VERIFICATION_GUIDE.md`.
 
 If unsure whether documentation needs updating, update it or clearly document why no update was required.
 

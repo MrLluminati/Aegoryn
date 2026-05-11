@@ -43,18 +43,6 @@ const initialFormState: FormState = {
   sourceText: ""
 };
 
-function getBalanceDelta(type: "income" | "expense" | "transfer", amount: number): number {
-  if (type === "income") return amount;
-  if (type === "expense") return -amount;
-  return 0;
-}
-
-function getReversalType(type: "income" | "expense" | "transfer"): "income" | "expense" | "transfer" {
-  if (type === "income") return "expense";
-  if (type === "expense") return "income";
-  return "transfer";
-}
-
 function isReversalTransaction(transaction: Transaction): boolean {
   return (
     transaction.category === "reversal" ||
@@ -125,11 +113,6 @@ export default function AccountsPage() {
     [accounts]
   );
 
-  const selectedBucket = useMemo(
-    () => buckets.find((bucket) => bucket.id === form.moneyBucketId),
-    [buckets, form.moneyBucketId]
-  );
-
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setStatus("");
@@ -155,46 +138,20 @@ export default function AccountsPage() {
         return;
       }
 
-      const selectedAccount = accounts.find((account) => account.id === form.accountId);
-      const balanceDelta = getBalanceDelta(form.transactionType, amount);
-
-      const insertResult = await supabase.from("transactions").insert({
-        user_id: sessionData.session.user.id,
-        transaction_date: form.transactionDate,
-        transaction_type: form.transactionType,
-        amount,
-        category: form.category || null,
-        account_id: form.accountId,
-        money_bucket_id: form.moneyBucketId || null,
-        description: form.description || null,
-        source_text: form.sourceText || null
+      const transactionResult = await supabase.rpc("create_ledger_transaction", {
+        p_transaction_date: form.transactionDate,
+        p_transaction_type: form.transactionType,
+        p_amount: amount,
+        p_category: form.category || null,
+        p_account_id: form.accountId,
+        p_money_bucket_id: form.moneyBucketId || null,
+        p_description: form.description || null,
+        p_source_text: form.sourceText || null
       });
 
-      if (insertResult.error) {
-        setStatus(insertResult.error.message);
+      if (transactionResult.error) {
+        setStatus(`Transaction save failed: ${transactionResult.error.message}`);
         return;
-      }
-
-      if (selectedAccount) {
-        const accountUpdate = await supabase
-          .from("accounts")
-          .update({ current_balance: Number(selectedAccount.current_balance) + balanceDelta })
-          .eq("id", selectedAccount.id);
-        if (accountUpdate.error) {
-          setStatus(accountUpdate.error.message);
-          return;
-        }
-      }
-
-      if (selectedBucket && form.moneyBucketId) {
-        const bucketUpdate = await supabase
-          .from("money_buckets")
-          .update({ current_balance: Number(selectedBucket.current_balance) + balanceDelta })
-          .eq("id", selectedBucket.id);
-        if (bucketUpdate.error) {
-          setStatus(bucketUpdate.error.message);
-          return;
-        }
       }
 
       setForm((current) => ({ ...initialFormState, accountId: current.accountId, moneyBucketId: current.moneyBucketId, transactionDate: today }));
@@ -233,49 +190,13 @@ export default function AccountsPage() {
         return;
       }
 
-      const amount = Number(transaction.amount);
-      const reversalType = getReversalType(transaction.transaction_type);
-      const account = accounts.find((item) => item.id === transaction.account_id);
-      const bucket = buckets.find((item) => item.id === transaction.money_bucket_id);
-      const reversalDelta = getBalanceDelta(reversalType, amount);
-
-      const reversalResult = await supabase.from("transactions").insert({
-        user_id: sessionData.session.user.id,
-        transaction_date: today,
-        transaction_type: reversalType,
-        amount,
-        category: "reversal",
-        account_id: transaction.account_id,
-        money_bucket_id: transaction.money_bucket_id,
-        description: `Reversal of: ${transaction.description || transaction.category || transaction.transaction_type}`,
-        source_text: `Reversal entry created to preserve audit history. Original transaction id: ${transaction.id}. Original note: ${transaction.source_text || "N/A"}`
+      const reversalResult = await supabase.rpc("reverse_ledger_transaction", {
+        p_transaction_id: transaction.id
       });
 
       if (reversalResult.error) {
-        setStatus(reversalResult.error.message);
+        setStatus(`Reversal failed: ${reversalResult.error.message}`);
         return;
-      }
-
-      if (account) {
-        const accountUpdate = await supabase
-          .from("accounts")
-          .update({ current_balance: Number(account.current_balance) + reversalDelta })
-          .eq("id", account.id);
-        if (accountUpdate.error) {
-          setStatus(accountUpdate.error.message);
-          return;
-        }
-      }
-
-      if (bucket) {
-        const bucketUpdate = await supabase
-          .from("money_buckets")
-          .update({ current_balance: Number(bucket.current_balance) + reversalDelta })
-          .eq("id", bucket.id);
-        if (bucketUpdate.error) {
-          setStatus(bucketUpdate.error.message);
-          return;
-        }
       }
 
       setStatus("Reversal entry created and balances adjusted. Original transaction preserved.");

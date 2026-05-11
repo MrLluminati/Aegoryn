@@ -13,6 +13,7 @@ AegorynOS should be built as a private web app first, with mobile app conversion
 | Backend | Next.js API routes / server actions |
 | Database | Supabase PostgreSQL |
 | Auth | Supabase Auth |
+| Route protection | Next.js proxy and Supabase cookie-backed session checks |
 | AI | OpenAI API |
 | Hosting | Vercel |
 | Payments later | Razorpay / Stripe |
@@ -36,9 +37,45 @@ Backend writes to database
 Dashboard updates
 ```
 
+## Current Auth Flow
+
+The browser Supabase client uses cookie-backed auth through `@supabase/ssr`.
+
+The Next.js proxy checks protected app routes before page render:
+
+```text
+/chat
+/dashboard
+/accounts
+/profile
+/settings
+/usage
+```
+
+If no verified Supabase user is present, the proxy redirects to `/login`.
+
+The public landing page remains accessible to signed-in users, but its primary action changes to open authenticated app areas.
+
+The client `ProtectedRoute` wrapper remains as a friendly loading and fallback layer, but the proxy is the first guard.
+
+## Current Ledger Write Flow
+
+Manual ledger entries call Supabase RPC functions instead of performing separate client-side writes.
+
+Current functions:
+
+```text
+create_ledger_transaction
+reverse_ledger_transaction
+```
+
+These functions keep transaction creation, reversal creation, account balance updates, and money-bucket updates inside one database transaction.
+
 ## AI Safety and Cost Control
 
 The frontend must never call OpenAI directly. All AI calls must go through the backend.
+
+Parser API routes must verify the authenticated Supabase user on the server before processing private text.
 
 Before every AI call:
 

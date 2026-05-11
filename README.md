@@ -43,6 +43,7 @@ This repository includes the project foundation documents and safety rules requi
 - `docs/SETUP.md`
 - `docs/SECURITY.md`
 - `docs/MVP_BACKLOG.md`
+- `docs/LOCAL_VERIFICATION_GUIDE.md`
 - `docs/VERSIONING_AND_RELEASES.md`
 - `docs/PROJECT_RULEBOOK.md`
 - `docs/AI_AGENT_GUIDELINES.md`
@@ -60,6 +61,7 @@ See the `docs/` folder:
 - `SETUP.md`
 - `SECURITY.md`
 - `MVP_BACKLOG.md`
+- `LOCAL_VERIFICATION_GUIDE.md`
 - `VERSIONING_AND_RELEASES.md`
 - `PROJECT_RULEBOOK.md`
 - `AI_AGENT_GUIDELINES.md`
@@ -70,4 +72,4 @@ Do not commit real credentials, API keys, tokens, OTPs, recovery codes, or priva
 
 ## Current Status
 
-Repository foundation and documentation baseline are in progress. Actual app code has not started yet.
+MVP development is in progress. The repository now includes the Next.js app scaffold, Supabase-backed authentication and account-ledger surfaces, protected app navigation, the initial deterministic Aego parser endpoint, and placeholder profile/settings/usage pages.

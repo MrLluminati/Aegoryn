@@ -77,6 +77,7 @@ Status legend:
 - [x] Add Supabase setup guide.
 - [x] Add Supabase environment helper.
 - [x] Add Supabase browser client helper.
+- [x] Add Supabase server/client SSR auth helper.
 - [x] Add initial Supabase row types.
 - [x] Add account/bucket/transaction fetch helpers.
 - [x] Add local Supabase connection status page.
@@ -92,16 +93,19 @@ Status legend:
 - [x] Add explicit authenticated role grants for Data API access.
 - [x] Add Savings bucket seed migration.
 - [x] Run Savings bucket seed migration in Supabase.
+- [x] Run user profile bootstrap migration in Supabase.
+- [x] Run atomic ledger functions migration in Supabase.
 
 ---
 
 ## 5. Authentication
 
-- [ ] Add sign-up page.
+- [x] Add sign-up page.
 - [x] Add login page.
 - [~] Add logout action.
-- [~] Add protected dashboard route.
-- [ ] Create user profile after first login.
+- [x] Add protected dashboard route.
+- [~] Create user profile after first login.
+- [x] Add proxy redirect protection for private app routes.
 
 ---
 
@@ -134,6 +138,8 @@ Status legend:
 - [x] Verify transaction reversal locally.
 - [x] Add Savings as required default money-bucket rule.
 - [x] Verify Savings bucket appears in account ledger dropdown.
+- [x] Move transaction creation and reversal balance updates into atomic database functions.
+- [x] Verify atomic ledger transaction creation and reversal after Supabase RPC migration.
 
 ---
 
@@ -154,8 +160,8 @@ Status legend:
 - [x] Add logged-out navbar with Login and Try Aego CTA.
 - [x] Make Try Aego route logged-out users to `/login`.
 - [x] Make Try Aego route logged-in users to `/chat`.
-- [~] Protect `/chat`, `/dashboard`, and `/accounts`.
-- [~] Redirect unauthenticated feature access to `/login`.
+- [x] Protect `/chat`, `/dashboard`, and `/accounts`.
+- [x] Redirect unauthenticated feature access to `/login`.
 - [~] Redirect logged-out users to `/` after sign-out.
 - [x] Add consistent logged-in navbar with Chat, Dashboard, Accounts, and future tools.
 - [x] Add generated profile/avatar button.
@@ -180,6 +186,7 @@ Status legend:
 
 - [x] Create static chat UI shell.
 - [x] Create backend chat endpoint.
+- [x] Require authentication before parser API calls.
 - [x] Create AI parser schema.
 - [x] Add classification logic.
 - [x] Add clarification-message example.

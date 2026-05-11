@@ -48,9 +48,12 @@ Version 0.1 must prove one thing:
 
 ### 4.1 Authentication
 
+- Email/password sign-up
 - Email/password login
 - Supabase Auth
 - User-specific data isolation
+- Protected app routes must redirect unauthenticated users before private pages load.
+- New users should receive a `users_profile` row automatically or during first authenticated login.
 
 ### 4.2 Chat Assistant
 
@@ -58,9 +61,13 @@ Primary input screen. The user enters natural language updates, the backend chec
 
 The product must remain chat-first. Manual forms may exist for testing, admin fallback, or correction flows, but the intended user experience is that users dump raw updates into the chat and Aego sorts them into the correct data structures.
 
+Parser endpoints must require an authenticated user before processing private updates.
+
 ### 4.3 Account Management
 
 Tracks bank accounts, balances, money buckets, income, expenses, transfers, and monthly summaries.
+
+Transaction creation and reversal must be atomic: the transaction record and related account or money-bucket balance changes should succeed together or fail together.
 
 Initial seeded data:
 
@@ -116,6 +123,7 @@ AI response must include:
 ## 6. Required Screens
 
 - Login
+- Sign-up
 - Dashboard
 - Chat Assistant
 - Accounts

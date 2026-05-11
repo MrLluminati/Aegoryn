@@ -76,7 +76,20 @@ The frontend must not directly call:
 
 ---
 
-## 6. Payment Security - Future
+## 6. Current App-Level Guards
+
+Protected app pages are guarded in two layers:
+
+1. Next.js proxy checks Supabase cookie-backed auth before protected routes render.
+2. The client `ProtectedRoute` component remains as a fallback and user-friendly loading state.
+
+The parser API checks the authenticated Supabase user on the server before parsing private updates.
+
+Manual ledger writes use database functions so the transaction row and balance updates succeed or fail together.
+
+---
+
+## 7. Payment Security - Future
 
 Payment integration is not part of Version 0.1.
 
@@ -90,7 +103,7 @@ When added later:
 
 ---
 
-## 7. Reporting Security Issues
+## 8. Reporting Security Issues
 
 For now, report security issues directly to the project owner.
 
@@ -108,12 +121,15 @@ security@[domain]
 
 ---
 
-## 8. Security Checklist Before Private Alpha
+## 9. Security Checklist Before Private Alpha
 
 - [ ] `.env.local` is ignored by Git.
 - [ ] no real credentials are committed.
 - [ ] Supabase Row Level Security is enabled.
 - [ ] user data is isolated by user ID.
+- [ ] protected routes redirect signed-out users before private pages load.
+- [ ] parser API rejects signed-out requests.
+- [ ] ledger writes use atomic database functions.
 - [ ] AI parser validates structured output.
 - [ ] usage-credit gate runs before AI calls.
 - [ ] logs do not expose secrets.

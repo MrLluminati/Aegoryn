@@ -39,6 +39,7 @@
 - Add transactions table UI
 - Add manual transaction form
 - Add money buckets
+- Move ledger writes into atomic database functions
 
 ## Phase 6 — Brand Foundation Checkpoint
 
@@ -80,6 +81,8 @@ This checkpoint must happen before chat-based database writes are enabled.
 - Add generated profile/avatar button for logged-in users.
 - Add profile dropdown with Settings, Account, Usage, and Sign out placeholders.
 - Display the current app version consistently across pages, preferably as a navbar pill or footer/system badge.
+- Add proxy-backed protection for private app routes.
+- Add automatic user-profile bootstrap for new sign-ups.
 
 ### Deferred Authentication Enhancements
 

@@ -8,10 +8,10 @@ Authoritative migration files are stored in:
 supabase/migrations/
 ```
 
-Current schema checkpoint:
+Current migration set:
 
 ```text
-v0.1.1-supabase-schema
+0001_initial_schema.sql through 0006_atomic_ledger_functions.sql
 ```
 
 ---
@@ -22,6 +22,10 @@ v0.1.1-supabase-schema
 |---|---|
 | `supabase/migrations/0001_initial_schema.sql` | Creates core MVP tables and indexes. |
 | `supabase/migrations/0002_rls_policies.sql` | Enables Row Level Security and user-owned row policies. |
+| `supabase/migrations/0003_api_role_grants.sql` | Grants authenticated Data API access to MVP tables while anonymous users remain blocked. |
+| `supabase/migrations/0004_seed_savings_bucket.sql` | Seeds the required default Savings money bucket for the local test user. |
+| `supabase/migrations/0005_user_profile_bootstrap.sql` | Creates a trigger to insert a `users_profile` row when Supabase Auth creates a user. |
+| `supabase/migrations/0006_atomic_ledger_functions.sql` | Adds RPC functions for atomic transaction creation and reversal. |
 
 ---
 
@@ -237,7 +241,58 @@ Tables covered:
 
 ---
 
-## 4. Seed Data
+## 4. Database Functions
+
+### 4.1 create_profile_for_new_user
+
+Migration:
+
+```text
+supabase/migrations/0005_user_profile_bootstrap.sql
+```
+
+Purpose:
+
+- automatically creates a `users_profile` row for a new Supabase Auth user;
+- uses safe defaults: `INR` and `Asia/Kolkata`;
+- avoids manual profile-row creation for future sign-ups.
+
+Existing users may still need a profile row created by signing in once after the client-side profile bootstrap helper is deployed.
+
+### 4.2 create_ledger_transaction
+
+Migration:
+
+```text
+supabase/migrations/0006_atomic_ledger_functions.sql
+```
+
+Purpose:
+
+- inserts one transaction;
+- updates the linked account balance;
+- updates the linked money-bucket balance;
+- rejects unauthenticated calls;
+- rejects account or bucket IDs that do not belong to the authenticated user.
+
+### 4.3 reverse_ledger_transaction
+
+Migration:
+
+```text
+supabase/migrations/0006_atomic_ledger_functions.sql
+```
+
+Purpose:
+
+- creates one audit-preserving reversal transaction;
+- updates linked balances in the same database transaction;
+- blocks reversal of reversal entries;
+- blocks reversing the same original transaction more than once.
+
+---
+
+## 5. Seed Data
 
 Seed templates are stored in:
 
@@ -256,11 +311,10 @@ Do not commit private production data or credentials.
 
 ---
 
-## 5. Next Database Tasks
+## 6. Next Database Tasks
 
-- Create Supabase project.
-- Run migrations.
-- Create local authenticated user.
-- Replace seed placeholders locally.
-- Test RLS policies.
-- Connect dashboard to database.
+- Test user-specific RLS policies with a second user.
+- Run and verify user profile bootstrap migration in Supabase.
+- Run and verify atomic ledger functions migration in Supabase.
+- Keep migration documentation current as new tables, functions, or grants are added.
+- Add usage-credit checks before live AI calls.

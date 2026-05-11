@@ -51,6 +51,14 @@ This project follows a human-readable changelog format inspired by Keep a Change
 - Account balance and money-bucket balance update logic for manual income and expense entries.
 - Ledger reversal flow that creates audit-preserving correction entries instead of silently deleting transactions.
 - MVP brand guidelines document for the lightweight AegorynOS brand foundation.
+- Supabase email/password sign-up page for private alpha account creation.
+- Login-screen link to create a new account.
+- Supabase SSR auth helper for cookie-backed browser sessions, Next.js proxy checks, and server route auth.
+- Next.js proxy redirects for protected app routes and signed-in auth routes.
+- Server-side authentication check for the Aego parser API.
+- User-profile bootstrap helper and Supabase trigger migration.
+- Atomic Supabase ledger RPC functions for transaction creation and reversal.
+- Local verification guide with manual Supabase migration and auth/ledger smoke-test steps.
 
 ### Changed
 
@@ -83,9 +91,19 @@ This project follows a human-readable changelog format inspired by Keep a Change
 - Recorded successful production build before creating the `v0.1.2-supabase-connect` rollback tag.
 - Started `v0.1.3-account-ledger` account-management phase.
 - Recorded successful local manual transaction verification through `/accounts`.
+- Recorded successful verification of atomic account-ledger transaction creation and reversal after the Supabase RPC migration.
+- Recorded successful execution of the Supabase user-profile bootstrap migration.
+- Recorded successful verification that signed-in users can still access the landing page with authenticated actions.
 - Updated account ledger UI to explain the no-silent-delete safety rule.
 - Added a brand-foundation checkpoint to the roadmap before the AI parser phase.
 - Updated MVP backlog to track brand-foundation tasks and future rollback tag.
+- Updated account-ledger writes to use database functions instead of separate client-side insert/update calls.
+- Updated Supabase docs to act as a manual migration guide for non-coder verification.
+
+### Fixed
+
+- Suppressed root hydration noise caused by browser extensions adding attributes before React loads.
+- Made the public landing page auth-aware so signed-in users can still view it without seeing logged-out calls to action.
 
 ### Security
 
@@ -95,6 +113,8 @@ This project follows a human-readable changelog format inspired by Keep a Change
 - Confirmed RLS policy migration ran successfully in Supabase.
 - Granted authenticated Data API access while keeping anonymous users blocked from private MVP tables.
 - Preserved financial audit history by using reversal transactions instead of destructive deletion.
+- Added proxy-backed route protection for private app pages.
+- Added authenticated-server check before parser API processing.
 
 ---
 

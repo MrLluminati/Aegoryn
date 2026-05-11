@@ -1,5 +1,10 @@
+"use client";
+
+import Link from "next/link";
 import { MessageSquareText, WalletCards, ListChecks, BarChart3 } from "lucide-react";
-import { AppShell, NavPill, Panel } from "../components/brand/AppShell";
+import { useEffect, useState } from "react";
+import { AppShell, Panel, primaryButtonClassName, secondaryButtonClassName } from "../components/brand/AppShell";
+import { createBrowserSupabaseClient } from "../lib/supabase/client";
 
 const modules = [
   {
@@ -24,6 +29,52 @@ const modules = [
   }
 ];
 
+function LandingActionPanel() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isChecking, setIsChecking] = useState(true);
+
+  useEffect(() => {
+    const supabase = createBrowserSupabaseClient();
+
+    async function loadSession() {
+      const { data } = await supabase.auth.getSession();
+      setIsLoggedIn(Boolean(data.session));
+      setIsChecking(false);
+    }
+
+    loadSession();
+
+    const { data: listener } = supabase.auth.onAuthStateChange((_event, session) => {
+      setIsLoggedIn(Boolean(session));
+      setIsChecking(false);
+    });
+
+    return () => {
+      listener.subscription.unsubscribe();
+    };
+  }, []);
+
+  return (
+    <Panel>
+      <p className="text-sm uppercase tracking-[0.3em] text-aegoryn-gold">MVP Principle</p>
+      <h2 className="mt-3 text-2xl font-semibold">{isLoggedIn ? "Signed in. Aego is ready." : "Login first. Chat-led records after."}</h2>
+      <p className="mt-4 text-sm leading-7 text-white/60">
+        {isLoggedIn
+          ? "You can still review the public home page, but private records and workflows live inside the authenticated app areas."
+          : "AegorynOS protects private records behind authentication. Once signed in, Aego becomes the primary interface for dumping updates and structuring them into the correct dashboard areas."}
+      </p>
+      <div className="mt-6 flex flex-wrap gap-3">
+        <Link className={primaryButtonClassName} href="/chat">{isChecking ? "Checking..." : "Open Aego"}</Link>
+        {isLoggedIn ? (
+          <Link className={secondaryButtonClassName} href="/dashboard">Dashboard</Link>
+        ) : (
+          <Link className={secondaryButtonClassName} href="/login">Login</Link>
+        )}
+      </div>
+    </Panel>
+  );
+}
+
 export default function HomePage() {
   return (
     <AppShell
@@ -46,17 +97,7 @@ export default function HomePage() {
           </div>
         </Panel>
 
-        <Panel>
-          <p className="text-sm uppercase tracking-[0.3em] text-aegoryn-gold">MVP Principle</p>
-          <h2 className="mt-3 text-2xl font-semibold">Login first. Chat-led records after.</h2>
-          <p className="mt-4 text-sm leading-7 text-white/60">
-            AegorynOS protects private records behind authentication. Once signed in, Aego becomes the primary interface for dumping updates and structuring them into the correct dashboard areas.
-          </p>
-          <div className="mt-6 flex flex-wrap gap-3">
-            <NavPill href="/login" variant="primary">Try Aego</NavPill>
-            <NavPill href="/login">Login</NavPill>
-          </div>
-        </Panel>
+        <LandingActionPanel />
       </section>
 
       <section id="features" className="mt-6 grid gap-4 md:grid-cols-2 lg:grid-cols-4">

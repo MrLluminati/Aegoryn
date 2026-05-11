@@ -18,11 +18,13 @@ function getSafeNextPath(): string {
   return nextPath;
 }
 
-export default function LoginPage() {
+export default function SignupPage() {
   const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const [message, setMessage] = useState("");
+  const [isSuccess, setIsSuccess] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
@@ -38,31 +40,51 @@ export default function LoginPage() {
     redirectIfSignedIn();
   }, [router]);
 
-  async function handleLogin(event: FormEvent<HTMLFormElement>) {
+  async function handleSignup(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setMessage("");
+    setIsSuccess(false);
+
+    const normalizedEmail = email.trim();
+
+    if (password.length < 6) {
+      setMessage("Use a password with at least 6 characters.");
+      return;
+    }
+
+    if (password !== confirmPassword) {
+      setMessage("Passwords do not match.");
+      return;
+    }
+
     setIsLoading(true);
 
     try {
       const supabase = createBrowserSupabaseClient();
-      const { data, error } = await supabase.auth.signInWithPassword({ email, password });
+      const { data, error } = await supabase.auth.signUp({
+        email: normalizedEmail,
+        password
+      });
 
       if (error) {
         setMessage(error.message);
         return;
       }
 
-      if (data.user) {
+      if (data.session && data.user) {
         await ensureUserProfile(supabase, data.user);
+        router.push(getSafeNextPath());
+        router.refresh();
+        return;
       }
 
-      router.push(getSafeNextPath());
-      router.refresh();
+      setIsSuccess(true);
+      setMessage("Account created. Check your email to confirm it, then sign in.");
     } catch (error) {
       setMessage(
         error instanceof Error
           ? error.message
-          : "Login failed. Check Supabase URL, publishable key, network, and dev-server restart."
+          : "Sign-up failed. Check Supabase URL, publishable key, network, and dev-server restart."
       );
     } finally {
       setIsLoading(false);
@@ -72,15 +94,16 @@ export default function LoginPage() {
   return (
     <AppShell
       eyebrow="Access"
-      title="Sign in"
-      subtitle="Sign in with email and password to open Aego and the private dashboard. Google login is planned for a later production-auth stage."
+      title="Create account"
+      subtitle="Create a private alpha account with email and password. Google login remains deferred until the production-auth stage."
       maxWidthClassName="max-w-2xl"
     >
       <Panel>
-        <form className="space-y-5" onSubmit={handleLogin}>
+        <form className="space-y-5" onSubmit={handleSignup}>
           <label className="block">
             <span className="text-sm text-white/60">Email</span>
             <input
+              autoComplete="email"
               className={fieldClassName}
               type="email"
               value={email}
@@ -92,7 +115,9 @@ export default function LoginPage() {
           <label className="block">
             <span className="text-sm text-white/60">Password</span>
             <input
+              autoComplete="new-password"
               className={fieldClassName}
+              minLength={6}
               type="password"
               value={password}
               onChange={(event) => setPassword(event.target.value)}
@@ -100,16 +125,33 @@ export default function LoginPage() {
             />
           </label>
 
-          {message ? <p className="rounded-2xl border border-red-400/30 bg-red-500/10 p-4 text-sm text-red-200">{message}</p> : null}
+          <label className="block">
+            <span className="text-sm text-white/60">Confirm password</span>
+            <input
+              autoComplete="new-password"
+              className={fieldClassName}
+              minLength={6}
+              type="password"
+              value={confirmPassword}
+              onChange={(event) => setConfirmPassword(event.target.value)}
+              required
+            />
+          </label>
+
+          {message ? (
+            <p className={isSuccess ? "rounded-2xl border border-aegoryn-gold/30 bg-aegoryn-gold/10 p-4 text-sm text-aegoryn-gold" : "rounded-2xl border border-red-400/30 bg-red-500/10 p-4 text-sm text-red-200"}>
+              {message}
+            </p>
+          ) : null}
 
           <button className={`${primaryButtonClassName} w-full`} type="submit" disabled={isLoading}>
-            {isLoading ? "Signing in..." : "Sign in and open Aego"}
+            {isLoading ? "Creating account..." : "Create account"}
           </button>
 
           <p className="text-center text-sm text-white/50">
-            Need private alpha access?{" "}
-            <Link className="text-aegoryn-gold transition hover:text-white" href="/signup">
-              Create an account
+            Already have access?{" "}
+            <Link className="text-aegoryn-gold transition hover:text-white" href="/login">
+              Sign in
             </Link>
           </p>
         </form>

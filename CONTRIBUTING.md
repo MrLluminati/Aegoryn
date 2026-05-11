@@ -51,6 +51,7 @@ When making project changes, update the relevant documentation:
 | New service/account/domain | `docs/PROJECT_REGISTRY.md`, `docs/CONTACTS_AND_DOMAINS.md` |
 | Naming/brand change | `docs/PROJECT_REGISTRY.md`, `README.md`, `CHANGELOG.md` |
 | Security/credential handling | `docs/PROJECT_RULEBOOK.md`, `.env.example`, `CHANGELOG.md` |
+| Manual owner verification | `docs/LOCAL_VERIFICATION_GUIDE.md`, relevant setup guide, `CHANGELOG.md` |
 
 ---
 

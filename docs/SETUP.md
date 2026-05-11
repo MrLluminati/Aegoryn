@@ -110,9 +110,19 @@ Useful current routes:
 
 ```text
 http://localhost:3000
+http://localhost:3000/signup
+http://localhost:3000/login
 http://localhost:3000/dashboard
 http://localhost:3000/chat
 http://localhost:3000/setup/supabase
+```
+
+After auth-related changes, sign in again if protected pages redirect unexpectedly. The app uses cookie-backed Supabase auth so the Next.js proxy and API routes can verify the user.
+
+For a step-by-step non-coder verification checklist, see:
+
+```text
+docs/LOCAL_VERIFICATION_GUIDE.md
 ```
 
 ---
