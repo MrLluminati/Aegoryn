@@ -198,7 +198,8 @@ Status legend:
 - [x] Add clarification-message example.
 - [ ] Add clarification handling.
 - [ ] Add action validation.
-- [ ] Save AI messages.
+- [x] Save AI messages.
+- [ ] Verify saved parser history reloads after signed-in chat parse.
 - [ ] Save structured actions.
 - [ ] Add AI-confirmed money-bucket creation flow.
 - [x] Verify parser locally with account-management prompts.

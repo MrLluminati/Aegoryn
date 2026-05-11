@@ -129,8 +129,26 @@ Paid ₹500 for groceries from Kotak from Savings.
 ```
 
 3. Confirm Aego returns a structured parser result.
+4. Refresh the page.
+5. Confirm the recent parser message appears again from saved history.
 
 If the chat says you must sign in, sign in again. If it still fails, check `.env.local` and restart the dev server.
+
+### Optional Supabase table check
+
+Use this only if you want to confirm the saved row directly.
+
+1. Open the Supabase dashboard.
+2. Open **Table Editor**.
+3. Open the `ai_messages` table.
+4. Look for the newest row for your test user.
+5. Confirm:
+   - `user_message` contains your chat text;
+   - `classification` is `account_management` for the sample above;
+   - `status` is `processed` when no clarification is needed, or `clarification_required` when Aego asks a question;
+   - `ai_response` contains JSON.
+
+Do not paste private financial details into screenshots or public issue reports.
 
 ---
 

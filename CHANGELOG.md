@@ -20,6 +20,12 @@ This project follows a human-readable changelog format inspired by Keep a Change
 - `NOTICE.md` with ownership and no-license notice.
 - `.github/CODEOWNERS` assigning repository ownership to `@MrLluminati`.
 - Code-level ownership constants in `lib/ownership.ts`.
+- Authenticated Aego parser requests are now saved to the `ai_messages` table.
+- The chat page now reloads recent saved parser history for the signed-in user.
+
+### Security
+
+- Parser logs are written only after the API route verifies the authenticated Supabase user.
 
 ---
 

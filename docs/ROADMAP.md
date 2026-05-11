@@ -65,6 +65,8 @@ This is a lightweight UI/brand consistency checkpoint before the AI parser phase
 - Add confirmation step before saving structured actions.
 - Save AI message logs.
 
+Current checkpoint note: parser requests are now saved to `ai_messages` after authentication, and recent parser history reloads on the chat page. The next AI-parser work is action validation, clarification handling, and confirmed writes into transactions, tasks, or projects.
+
 ## Phase 8 — Authenticated Navigation Shell
 
 This checkpoint must happen before chat-based database writes are enabled.

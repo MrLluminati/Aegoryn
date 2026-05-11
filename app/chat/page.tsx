@@ -1,14 +1,18 @@
 "use client";
 
-import { FormEvent, useState } from "react";
+import { FormEvent, useEffect, useRef, useState } from "react";
 import { AppShell, Panel, primaryButtonClassName } from "../../components/brand/AppShell";
 import { ProtectedRoute } from "../../components/auth/ProtectedRoute";
 import type { AegoParserResult } from "../../lib/aego/parser";
+import { createBrowserSupabaseClient } from "../../lib/supabase/client";
+import type { AiMessage } from "../../lib/supabase/types";
 
 type ChatMessage = {
   role: "user" | "assistant";
   text: string;
   result?: AegoParserResult;
+  savedAt?: string;
+  status?: string;
 };
 
 const initialMessages: ChatMessage[] = [
@@ -18,10 +22,95 @@ const initialMessages: ChatMessage[] = [
   }
 ];
 
+function isAegoParserResult(value: unknown): value is AegoParserResult {
+  return (
+    typeof value === "object" &&
+    value !== null &&
+    "classification" in value &&
+    "intent" in value &&
+    "actions" in value &&
+    "summary" in value
+  );
+}
+
+function getParserResponseText(result: AegoParserResult): string {
+  return result.requiresClarification && result.clarificationQuestion ? result.clarificationQuestion : result.summary;
+}
+
+function buildSavedConversation(records: AiMessage[]): ChatMessage[] {
+  return records.flatMap((record) => {
+    const result = isAegoParserResult(record.ai_response) ? record.ai_response : undefined;
+    const userMessage: ChatMessage = {
+      role: "user",
+      text: record.user_message,
+      savedAt: record.created_at
+    };
+    const assistantMessage: ChatMessage = {
+      role: "assistant",
+      text: result ? getParserResponseText(result) : "Aego saved this message, but the parser result could not be displayed.",
+      result,
+      savedAt: record.created_at,
+      status: record.status
+    };
+
+    return [userMessage, assistantMessage];
+  });
+}
+
 export default function ChatPage() {
   const [messages, setMessages] = useState<ChatMessage[]>(initialMessages);
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [historyNotice, setHistoryNotice] = useState("Loading recent parser history...");
+  const hasLocalConversation = useRef(false);
+
+  useEffect(() => {
+    let isActive = true;
+
+    async function loadSavedMessages() {
+      try {
+        const supabase = createBrowserSupabaseClient();
+        const { data, error } = await supabase
+          .from("ai_messages")
+          .select("id,user_id,user_message,ai_response,classification,status,created_at")
+          .order("created_at", { ascending: false })
+          .limit(6)
+          .returns<AiMessage[]>();
+
+        if (!isActive) {
+          return;
+        }
+
+        if (error) {
+          setHistoryNotice("Recent parser history could not be loaded. New messages can still be parsed.");
+          return;
+        }
+
+        const records = (data ?? []).slice().reverse();
+
+        if (records.length === 0) {
+          setHistoryNotice("No saved parser history yet. Your next successful parse will be stored.");
+          return;
+        }
+
+        if (!hasLocalConversation.current) {
+          setMessages([...initialMessages, ...buildSavedConversation(records)]);
+        }
+
+        setHistoryNotice(`Showing ${records.length} saved parser ${records.length === 1 ? "entry" : "entries"}.`);
+      } catch (error) {
+        if (isActive) {
+          setHistoryNotice(error instanceof Error ? error.message : "Recent parser history could not be loaded.");
+        }
+      }
+    }
+
+    loadSavedMessages();
+
+    return () => {
+      isActive = false;
+    };
+  }, []);
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -31,6 +120,7 @@ export default function ChatPage() {
       return;
     }
 
+    hasLocalConversation.current = true;
     setMessages((current) => [...current, { role: "user", text: message }]);
     setInput("");
     setIsLoading(true);
@@ -53,11 +143,10 @@ export default function ChatPage() {
       }
 
       const result = payload.result;
-      const responseText = result.requiresClarification && result.clarificationQuestion
-        ? result.clarificationQuestion
-        : result.summary;
+      const responseText = getParserResponseText(result);
 
       setMessages((current) => [...current, { role: "assistant", text: responseText, result }]);
+      setHistoryNotice("Parser result saved. Refresh the page to confirm it reloads from history.");
     } catch (error) {
       setMessages((current) => [
         ...current,
@@ -81,6 +170,9 @@ export default function ChatPage() {
       <ProtectedRoute>
         <Panel className="flex min-h-[60vh] flex-col p-0">
           <section className="flex-1 space-y-4 p-6">
+            <div className="rounded-2xl border border-white/10 bg-black/25 px-4 py-3 text-xs text-white/50">
+              {historyNotice}
+            </div>
             {messages.map((message, index) => (
               <div
                 key={`${message.role}-${index}`}
@@ -92,6 +184,12 @@ export default function ChatPage() {
               >
                 <p className="text-xs uppercase tracking-[0.2em] opacity-60">{message.role}</p>
                 <p className="mt-2 text-sm leading-6">{message.text}</p>
+                {message.savedAt ? (
+                  <p className="mt-2 text-[11px] uppercase tracking-[0.2em] text-white/35">
+                    Saved {new Date(message.savedAt).toLocaleString()}
+                    {message.status ? ` - ${message.status.replace("_", " ")}` : ""}
+                  </p>
+                ) : null}
 
                 {message.result ? (
                   <div className="mt-4 rounded-2xl border border-white/10 bg-black/30 p-4 text-xs leading-5 text-white/60">

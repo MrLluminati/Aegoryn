@@ -1,3 +1,5 @@
+import type { AegoClassification, AegoParserResult } from "../aego/parser";
+
 export type Account = {
   id: string;
   user_id: string;
@@ -8,6 +10,18 @@ export type Account = {
   notes: string | null;
   created_at: string;
   updated_at: string;
+};
+
+export type AiMessageStatus = "processed" | "clarification_required" | "failed";
+
+export type AiMessage = {
+  id: string;
+  user_id: string;
+  user_message: string;
+  ai_response: AegoParserResult | null;
+  classification: AegoClassification | null;
+  status: AiMessageStatus;
+  created_at: string;
 };
 
 export type MoneyBucket = {

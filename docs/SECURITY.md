@@ -85,6 +85,8 @@ Protected app pages are guarded in two layers:
 
 The parser API checks the authenticated Supabase user on the server before parsing private updates.
 
+Successful parser requests are saved to `ai_messages` only after that server-side user check passes.
+
 Manual ledger writes use database functions so the transaction row and balance updates succeed or fail together.
 
 ---

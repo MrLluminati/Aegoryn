@@ -63,6 +63,8 @@ The product must remain chat-first. Manual forms may exist for testing, admin fa
 
 Parser endpoints must require an authenticated user before processing private updates.
 
+Parser interactions should be saved to `ai_messages` so the user can refresh the chat page and still see recent parser history. Saving the parser log is separate from saving confirmed actions into operational tables such as `transactions`, `tasks`, or `projects`.
+
 ### 4.3 Account Management
 
 Tracks bank accounts, balances, money buckets, income, expenses, transfers, and monthly summaries.

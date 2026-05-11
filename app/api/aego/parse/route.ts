@@ -24,8 +24,30 @@ export async function POST(request: NextRequest) {
     const message = typeof body.message === "string" ? body.message : "";
 
     const result = parseAegoCommand(message);
+    const messageStatus = result.requiresClarification ? "clarification_required" : "processed";
+    const { data: savedMessage, error: saveError } = await supabase
+      .from("ai_messages")
+      .insert({
+        user_id: user.id,
+        user_message: result.rawText,
+        ai_response: result,
+        classification: result.classification,
+        status: messageStatus
+      })
+      .select("id")
+      .single();
 
-    return NextResponse.json({ ok: true, result });
+    if (saveError) {
+      return NextResponse.json(
+        {
+          ok: false,
+          error: "Aego parsed the update, but could not save the private parser log. Please try again."
+        },
+        { status: 500 }
+      );
+    }
+
+    return NextResponse.json({ ok: true, result, messageId: savedMessage?.id ?? null });
   } catch (error) {
     return NextResponse.json(
       {

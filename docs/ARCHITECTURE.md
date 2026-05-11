@@ -77,6 +77,28 @@ The frontend must never call OpenAI directly. All AI calls must go through the b
 
 Parser API routes must verify the authenticated Supabase user on the server before processing private text.
 
+## Current Parser Log Flow
+
+The current parser is still deterministic and local to the app. It does not call a paid AI provider yet.
+
+For every signed-in parser request:
+
+```text
+Chat page sends private text
+  ↓
+API route verifies the Supabase user
+  ↓
+Deterministic parser creates a structured result
+  ↓
+API route saves the user message and parser result to ai_messages
+  ↓
+Chat page shows the parser response
+```
+
+The chat page also reads recent `ai_messages` rows for the signed-in user and displays them as recent parser history. Row Level Security keeps each user's parser history isolated.
+
+This is not the final action-save workflow. Structured transaction, task, and project writes still need validation and a confirmation step before Aego writes them to the operational tables.
+
 Before every AI call:
 
 1. Authenticate user.

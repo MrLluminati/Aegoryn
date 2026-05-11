@@ -187,7 +187,9 @@ Rules:
 
 - store parsed AI output as JSON where applicable;
 - do not log secrets or credentials;
-- use status values such as processed, clarification_required, or failed.
+- use status values such as `processed`, `clarification_required`, or `failed`;
+- parser logs should be created by the authenticated parser API route, not by anonymous clients;
+- the chat page may read recent rows for the signed-in user so parser history survives refreshes.
 
 ---
 
@@ -314,7 +316,7 @@ Do not commit private production data or credentials.
 ## 6. Next Database Tasks
 
 - Test user-specific RLS policies with a second user.
-- Run and verify user profile bootstrap migration in Supabase.
-- Run and verify atomic ledger functions migration in Supabase.
+- Verify saved parser history reloads from `ai_messages` after a signed-in chat parse.
+- Test `ai_messages` isolation with a second user.
 - Keep migration documentation current as new tables, functions, or grants are added.
 - Add usage-credit checks before live AI calls.
