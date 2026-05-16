@@ -19,9 +19,30 @@ export type ParsedTransaction = {
   sourceText: string;
 };
 
+export type ValidatedTransactionDraft = {
+  transactionDate: string;
+  type: "income" | "expense" | "transfer";
+  amount: number;
+  category: string | null;
+  accountId: string;
+  accountName: string;
+  moneyBucketId: string | null;
+  moneyBucketName: string | null;
+  description: string | null;
+  sourceText: string;
+};
+
+export type AegoActionValidation = {
+  isValid: boolean;
+  requiresConfirmation: boolean;
+  issues: string[];
+  resolvedTransaction?: ValidatedTransactionDraft;
+};
+
 export type AegoAction = {
   actionType: AegoIntent;
   transaction?: ParsedTransaction;
+  validation?: AegoActionValidation;
   confidence: "low" | "medium" | "high";
 };
 
