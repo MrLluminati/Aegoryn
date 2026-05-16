@@ -31,6 +31,11 @@ This project follows a human-readable changelog format inspired by Keep a Change
 - Parser logs are written only after the API route verifies the authenticated Supabase user.
 - Voice input uses the browser's speech-recognition capability; AegorynOS receives only the transcript after the user sends it.
 
+### Verified
+
+- Daily logbook refresh after signed-in chat messages was manually tested and confirmed.
+- Saved parser history reload after signed-in chat parse was manually tested and confirmed.
+
 ---
 
 ## [v0.1.4-auth-nav-shell] - 2026-05-11
