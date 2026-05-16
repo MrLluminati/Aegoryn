@@ -200,7 +200,8 @@ Status legend:
 - [ ] Add action validation.
 - [x] Save AI messages.
 - [x] Group saved parser history by daily log.
-- [ ] Verify saved parser history reloads after signed-in chat parse.
+- [x] Verify saved parser history reloads after signed-in chat parse.
+- [x] Verify daily logbook refreshes after new signed-in chat messages.
 - [ ] Verify daily log sidebar with messages across more than one day.
 - [x] Add experimental browser voice input.
 - [ ] Verify browser voice input on Chrome.
